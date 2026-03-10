@@ -1,0 +1,30 @@
+<mvc:View controllerName="code1.cl5.resource01.code1cl5resource01.controller.ResourceView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n2>title}">
+
+    <!-- <VBox>
+    </VBox> -->
+    <!-- <Button text="{btnText}" />
+    <Input width="20rem" value="{inputValue}" description="{inputDesc}" />
+    <HBox>
+        <Label text="{label>labelText}"
+         design="{label>labelDesign}"
+         width="{label>labelWidth}"/>
+    </HBox> -->
+    <HBox>
+        <Text text="{text>textText}" width="{text>textWidth}"/>
+    </HBox>
+
+
+    <HBox>
+        <Button text="Model1 확인" press="checkModel1" />
+        <Button text="Model2 확인" press="checkModel2" />
+
+    </HBox>
+
+
+
+
+    </Page>
+</mvc:View>

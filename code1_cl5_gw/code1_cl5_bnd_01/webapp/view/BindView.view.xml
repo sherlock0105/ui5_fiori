@@ -1,0 +1,140 @@
+<mvc:View controllerName="code1.cl505pv0002.code1cl5bnd01.controller.BindView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <!-- 값을 받아올 친구 -->
+         <!-- Student Information -->
+         <VBox width="70%" >
+ 
+                <Panel
+                        id="idClass"
+                        expandable="true"
+                        headerText="Student Information"
+                        expanded="false"
+                        expandAnimation="false"
+                        expand="onStudentExpand"
+                        >
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="Student Information"/>
+                        <ToolbarSpacer/>
+                        <Input id="iClass" width="6rem" placeholder="Class" showClearIcon="true"/>
+                        <Input id="iClNum" width="6rem" placeholder="Number" showClearIcon="true"/>
+                        <Button 
+                            icon="sap-icon://search"
+                            type="Transparent"
+                            press="onSearch"/>
+                        </Toolbar>
+                    </headerToolbar>
+                        <t:Table
+                            visibleRowCount="5"
+                            id="Student"
+                            cellClick="onBseg"
+                            rows="{/StudentSet}"
+                            selectionMode="Single"
+                            selectionBehavior="RowOnly"
+                            paste="onPaste"
+                            width="100%">
+                            <t:columns>
+                                <t:Column width="8rem">
+                                    <Label text="Class" />
+                                    <t:template>
+                                        <Text text="{Class}" />
+                                    </t:template>
+                                </t:Column>
+
+                                <t:Column width="8rem">
+                                    <Label text="Class Number" />
+                                    <t:template>
+                                        <Text text="{ClNum}" />
+                                    </t:template>
+                                </t:Column>
+
+                                <t:Column width="8rem">
+                                    <Label text="Name" />
+                                    <t:template>
+                                        <Text text="{Name}" />
+                                    </t:template>
+                                </t:Column>
+
+                                <t:Column width="8rem">
+                                    <Label text="Phone" />
+                                    <t:template>
+                                        <Text text="{Phone}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="6rem">
+                                    <Label text="Gender" />
+                                    <t:template>
+                                        <Text text="{Gender}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Panel>
+                    <!-- Idol Panel -->
+                <Panel
+                    id="idIdol"
+                    headerText="Idol Member List"
+                    expandable="true"
+                    expanded="false"
+                    expand="onIdolExpand"
+                    >
+                    <t:Table
+                        visibleRowCount="5"
+                        cellClick="onBseg"
+                        rows="{/IdolSet}"
+                        selectionMode="Single"
+                        selectionBehavior="RowOnly"
+                        paste="onPaste"
+                        width="100%">
+                        <t:columns>
+                            <t:Column width="8rem">
+                                <Label text="Group Id" />
+                                <t:template>
+                                    <Text text="{GroupId}" />
+                                </t:template>
+                            </t:Column>
+
+                            <t:Column width="10rem">
+                                <Label text="Member Id" />
+                                <t:template>
+                                    <Text text="{MemberId}" />
+                                </t:template>
+                            </t:Column>
+
+                            <t:Column width="6rem">
+                                <Label text="Member Name" />
+                                <t:template>
+                                    <Text text="{MemberName}" />
+                                </t:template>
+                            </t:Column>
+
+                            <t:Column width="8rem">
+                                <Label text="Member Gender" />
+                                <t:template>
+                                    <Text text="{MemberGender}" maxLines="1"/>
+                                </t:template>
+                            </t:Column>
+
+                            <t:Column width="6rem">
+                                <Label text="Member Addr" />
+                                <t:template>
+                                    <Text text="{MemberAddr}" />
+                                </t:template>
+                            </t:Column>
+
+                            <t:Column width="8rem">
+                                <Label text="Member Phone" />
+                                <t:template>
+                                    <Text text="{MemberPhone}" />
+                                </t:template>
+                            </t:Column>
+                        </t:columns>
+                    </t:Table>
+            </Panel>
+
+        </VBox>
+    </Page>
+</mvc:View>

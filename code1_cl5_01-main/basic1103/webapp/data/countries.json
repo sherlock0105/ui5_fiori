@@ -1,0 +1,11 @@
+{
+  "CountrySet": [
+    { "Country": "대한민국",   "Population": 5170 },
+    { "Country": "일본",       "Population": 12570 },
+    { "Country": "중국",       "Population": 141200 },
+    { "Country": "프랑스",     "Population": 8400 },
+    { "Country": "인도네시아", "Population": 25700 },
+    { "Country": "러시아",     "Population": 17420 },
+    { "Country": "미국",       "Population": 198000 }
+  ]
+}

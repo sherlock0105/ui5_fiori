@@ -1,0 +1,18 @@
+<mvc:View controllerName="code1.cl5.edu05.code1cl5edu05.controller.Edu05View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <Button text="{/text}" icon="{/icon}" /> <!-- key(property)를 중괄호로 감싸서 작성해야 함: 어디선가 끌고온 값임 /뒤에 바로 나왔다: 최상위 값이다. -->
+    <Input placeholder="{/place}" width="20em" description="{/desc}" />
+    <VBox>
+        <Button text="{/ButtonSet0/btext1}" width="{/ButtonSet0/bwidth1}" icon="{/ButtonSet0/bicon1}"/> <!-- 최상위/Buttonset/값 -->
+        <Button text="{/ButtonSet0/btext2}" width="{/ButtonSet0/bwidth2}" enabled="{/ButtonSet0/bboolean2}" />
+        <Input value="{/InputSet/ival1}" description="{/InputSet/idesc1}" maxLength="{/InputSet/imxlen1}" width="{/InputSet/iwidth1}" showClearIcon="{/InputSet/iclicon1}" />
+        <Input description="{/InputSet/idesc2}" width="{/InputSet/iwidth2}" maxLength="{/InputSet/imxlen2}" /> <!-- 최상위/Inputset/값 -->
+        <Label text="{/LabelSet/text}" design="{/LabelSet/design}" width="{/LabelSet/width}" />
+        <Text text="{/Text/text}" width="{/Text/width}" textAlign="{/Text/align}" />
+        <Button text="{/Buttonset/text}" icon="{/Buttonset/icon}" />
+    </VBox>
+    </Page>
+</mvc:View>

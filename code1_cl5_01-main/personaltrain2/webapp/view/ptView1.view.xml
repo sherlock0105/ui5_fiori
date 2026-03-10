@@ -1,0 +1,95 @@
+<mvc:View controllerName="personaltrain2.personaltrain2.controller.ptView1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    >
+    <Page id="page" title="간단한 강의 신청 목록">
+        <VBox>
+            <HBox>
+                <Text text="Hello World!" width="30em"/>
+                <Label text="SAP Code1 Class5" design="Bold" />
+            </HBox>
+            <HBox>
+                <Button text="button1" icon="sap-icon://search" enabled="false" />
+                <Button text="button2" icon="sap-icon://search" enabled="true" press="butt2" />
+            </HBox>
+        </VBox>
+    <Text text="L=========================================1" />
+
+        <VBox>
+            <Input placeholder="ID 입력" description="input field" showClearIcon="true"
+                   value="SAP Code1" required="true" maxLength="10"/>
+            <HBox>
+                <Label text="Number1" width="10em" />
+                <Input id="num1" showClearIcon="true" />
+            </HBox>
+            <HBox>
+                <Label text="Number2" width="10em" />
+                <Input id="num2" showClearIcon="true" />        
+            </HBox>
+            <HBox>
+                <Label text="result" width="10em" />
+                <Input id="res" showClearIcon="true" />        
+            </HBox>
+            <HBox>
+                <Button text="check" icon="sap-icon://accept" press="check1" />    
+                <Button text="check2" icon="sap-icon://accept" press="check2" />      
+            </HBox>
+        </VBox>
+    <Text text="L=========================================2" />
+
+        <VBox>
+            <Label id="magma" text="I'm moving!" design="Bold" width="30em"/>
+            <HBox>
+                <Button text="Begin" press="move('Begin')"  />
+                <Button text="Center" press="move('Center')"  />
+                <Button text="End" press="move('End')" />               
+            </HBox>
+            <Label id="gamag" text="I'm moving too!" design="Standard" width="30em" />
+            <Button text="mock" press="copy" />
+        </VBox>
+    <Text text="L=========================================3" />
+
+        <VBox>
+            <Label text="Original" id="orgn" />
+            <Input placeholder="New" showClearIcon="true" id="nEw" width="30em" />
+            <Button text="Change" press="chacha" />
+        </VBox>
+    <Text text="L=========================================3" />
+
+        <VBox>
+            <Input placeholder="bottom" width="30em" id="bot" />
+            <Input placeholder="height" width="30em" id="hi" />
+            <Input enabled="false" width="30em" id="resu" />
+            <Button text="calculation" width="15em" press="cala" />
+        </VBox>
+    <Text text="L=========================================" />
+
+        <VBox>
+            <HBox>
+                <Input placeholder="Enter your Class" width="20em" id="classchk" />
+                <Button text="Check your Class" width="10em" press="class" />
+                
+            </HBox>
+        </VBox>
+    <Text text="L=========================================2w-5 실습1" />
+
+    <VBox>
+        <HBox>
+            <Input placeholder="Value 1" width="20em" id="vala1" />
+            <Input placeholder="Value 2" width="20em" id="vala2" />
+            
+        </HBox>
+        <Button text="Check" width="10em" press="mea" />
+    </VBox>
+    <Text text="L=========================================2w-5 실습2" />
+
+    <VBox>
+        <Button text="gugudan" press="math" />
+    </VBox>
+
+
+    <Text text="L=========================================2w-6 실습1" />
+
+    </Page>
+</mvc:View>

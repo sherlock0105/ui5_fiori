@@ -1,0 +1,39 @@
+<mvc:View controllerName="code1.cl5.vizchart01.code1cl5vizchart01.controller.VizChartView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+    <Page id="page" title="{i18n>title}">
+      <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='20em' width="30em" vizType='bar'
+                vizProperties="{
+                title:{text:'vizChart',
+                       visible: false},
+                plotArea:{drawingEffect: 'glossy'},
+                legend:{drawingEffect: 'glossy'}
+                }" >
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/vizSet}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Mon"
+                                value="{Month}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Average"
+                                value="{Avg}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+        <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="Average" />
+                    <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension"
+                        values="Mon" />
+                </viz:feeds>
+                <viz:dependents>
+                    <viz:Popover id="idPopOver"></viz:Popover>
+                </viz:dependents>
+            </viz:VizFrame>
+      </Page>
+</mvc:View>

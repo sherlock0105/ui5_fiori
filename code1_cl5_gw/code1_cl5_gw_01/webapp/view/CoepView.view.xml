@@ -1,0 +1,106 @@
+<mvc:View
+    controllerName="code1.cl5.gw01.code1cl5gw01.controller.CoepView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <t:Table
+            visibleRowCount="20"
+            cellClick="onClick"
+            rows="{/CoepSet}"
+            selectionMode="Single"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title"
+        >
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title
+                        id="title"
+                        text="CO Object: Line Items"
+                    />
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="5rem">
+                    <Label text="CO Area" />
+                    <t:template>
+                        <Text
+                            text="{Kokrs}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="12rem">
+                    <Label text="Document Number" />
+                    <t:template>
+                        <Text
+                            text="{Belnr}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Posting Row" />
+                    <t:template>
+                        <Text
+                            text="{Buzei}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column
+                    width="6rem"
+                    sortProperty="Gjahr"
+                    filterProperty="Gjahr"
+                >
+                    <Label text="Fiscal Year" />
+                    <t:template>
+                        <Text
+                            text="{Gjahr}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column
+                    width="6rem"
+                    sortProperty="Budat"
+                >
+                    <Label text="Posting Date" />
+                    <t:template>
+                        <Text
+                            text="{Budat}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="12rem">
+                    <Label text="Val/COArea Crcy" />
+                    <t:template>
+                        <Text
+                            text="{
+                        parts:[{path:'Wkgbtr'},{path:'Twaer'}],
+                        type: 'sap.ui.model.type.Unit',
+                        formatOptions: {showMeasure: true }
+                        }"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="5rem">
+                    <Label text="Currency" />
+                    <t:template>
+                        <Text
+                            text="{Twaer}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+    </Page>
+</mvc:View>

@@ -1,0 +1,9 @@
+{
+  "StockSet": [
+    { "Product": "USB 메모리",  "Qty": 50 },
+    { "Product": "키보드",      "Qty": 30 },
+    { "Product": "모니터",      "Qty": 12 },
+    { "Product": "마우스",      "Qty": 75 },
+    { "Product": "듀얼 모니터", "Qty": 24 }
+  ]
+}

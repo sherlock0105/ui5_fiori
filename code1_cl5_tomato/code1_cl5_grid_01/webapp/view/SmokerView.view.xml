@@ -1,0 +1,69 @@
+<mvc:View controllerName="code1.cl505.grid01.code1cl5grid01.controller.SmokerView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+       <Button text="Search" press="onSearch" icon="sap-icon://search"/>
+    <!-- 값을 받아올 친구 -->
+    <Input id="iCarrid" width="5rem" placeholder="Airline" showClearIcon="true"/>
+    <!-- <Input id="iFldate" width="12rem" placeholder="Flight Date" showClearIcon="true"/> -->
+
+    <DatePicker
+    id="iFldate"
+    width="12rem"
+    displayFormat="yyyy-MM-dd"
+    valueFormat="yyyy-MM-dd"
+/>
+
+    <t:Table
+            visibleRowCount = "20"
+            id="AirLineList"
+            rows="{/SmokerSet}" 
+            selectionMode="Single"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title">
+        
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title text="Smoker List"/>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="5rem">
+                    <Label text="Airline" />
+                    <t:template>
+                        <Text text="{Carrid}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+           <t:Column width="12rem">
+                    <Label text="Airline Name" />
+                    <t:template>
+                        <Text text="{Carrname}" wrapping="false" />
+                    </t:template>
+                </t:Column>               
+                <t:Column width="8rem"> 
+                    <Label text="Connection ID" />
+                    <t:template>
+                        <Text text="{Connid}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+         <t:Column width="8rem"> 
+                    <Label text="Flight Date" />
+                    <t:template>
+                        <Text text="{Fldate}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+            <t:Column width="13rem">
+            <Label text="Smoker" />
+            <t:template>
+                <Link
+                    text="{Smoker}"
+                    press="onSmokerPress"
+                />
+            </t:template>
+        </t:Column>
+            </t:columns>
+        </t:Table>
+    </Page>
+</mvc:View>

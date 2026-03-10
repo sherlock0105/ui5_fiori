@@ -1,0 +1,98 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "code1.uxtest01.uxtest",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.19.1",
+      "toolsId": "1add4698-99d9-46da-9f51-cb7e3c620cac"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.120.39",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "code1.uxtest01.uxtest.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "code1.uxtest01.uxtest.view",
+        "async": true,
+        "viewPath": "code1.uxtest01.uxtest.view"
+      },
+      "routes": [
+        {
+          "name": "RouteUX_test_View",
+          "pattern": ":?query:",
+          "target": [
+            "TargetUX_test_View"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetUX_test_View": {
+          "id": "UX_test_View",
+          "name": "UX_test_View"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "code1.uxtest01.uxtest.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<mvc:View controllerName="code1.cl5.edu01.project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    >
+    <Page id="page" title="{i18n>title}">
+
+    <VBox>
+        <HBox>
+            <SearchField id="depcon" width="10em" placeholder="출발 국가" showSearchButton="false" />
+            <SearchField id="arrcon" width="10em" placeholder="도착 국가"  showSearchButton="false" />
+            <Input id="curren" width="10em" placeholder="Currency" showClearIcon="true" />
+            <Button text="확인" width="10em" press="checkpri" icon="sap-icon://travel-expense" />
+        </HBox>
+        
+        <t:Table
+            id="flightprice"
+            visibleRowCount="3"
+            rows="{schedules>/}" 
+            selectionMode="Single" 
+            selectionBehavior="Row"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="Airline" text="Airline"/>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+
+                <t:Column width="5rem">
+                    <Label text="CARRID" />
+                    <t:template>
+                        <Text text="{schedules>CARRID}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="5rem">
+                    <Label text="From" />
+                    <t:template>
+                        <Text text="{schedules>COUNTRYFR}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="5rem">
+                    <Label text="To" />
+                    <t:template>
+                        <Text text="{schedules>COUNTRYTO}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="5rem" >
+                    <Label text="Currency" />
+                    <t:template>
+                        <Text text="{schedules>Currency}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Price" />
+                    <t:template>
+                        <u:Currency value="{schedules>Price}" currency="{schedules>Currency}"/>
+                    </t:template>
+                </t:Column>
+
+                
+            </t:columns>	
+        </t:Table>
+
+    </VBox>
+
+    </Page>
+</mvc:View>

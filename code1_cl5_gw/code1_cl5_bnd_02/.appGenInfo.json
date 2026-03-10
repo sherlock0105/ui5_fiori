@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Feb 26 2026 16:25:22 GMT+0900 (한국 표준시)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://bgissap3.bgissap.co.kr:8000/sap/opu/odata/sap/ZC505PV0003_BND",
+    "appName": "code1_cl5_bnd_02",
+    "appTitle": "Binding Crud Practice",
+    "appDescription": "Binding Crud Practice",
+    "appNamespace": "code1.cl5.bnd02",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.23",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.2",
+    "template": "List Report Page V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "MatSet"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

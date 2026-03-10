@@ -1,0 +1,150 @@
+<mvc:View controllerName="code1.cl505.crud02.code1cl5crud02.controller.CRUDView02"
+    xmlns:t="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <t:Table
+        id="stList"
+        rows="{/StSet}"
+        visibleRowCount="7"
+        selectionMode="Single"
+        selectionBehavior="RowOnly"
+        paste="onPaste"
+        ariaLabelledBy="title">
+        <t:extension>
+            <OverflowToolbar style="Clear">
+                <Button icon="sap-icon://search" text="Search" press="onSearch"/>
+                <ToolbarSpacer width="4rem"/>
+                <Input id="ISteel" placeholder="Steel" width="6rem" maxLength="4" showClearIcon="true"/>
+                <Input id="IWerks" placeholder="Plant" width="10rem" maxLength="40" showClearIcon="true"/>             
+            </OverflowToolbar>
+        </t:extension>
+        <t:columns>
+            <t:Column width="10rem">
+                <Label text="Steel" />
+                <t:template>
+                    <Text text="{Steel}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="10rem">
+                <Label text="Plant" />
+                <t:template>
+                    <Text text="{Werks}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="10rem">
+                <Label text="Industry kind" />
+                <t:template>
+                    <Text text="{IndustryKind}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="10rem">
+                <Label text="Team Area" />
+                <t:template>
+                    <Text text="{Area}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="5rem">
+                <Label text="Quantity" />
+                <t:template>
+                    <ObjectNumber
+                        number="{
+                            parts: [
+                                { path: 'Menge' },
+                                { path: 'Meins' }
+                            ],
+                            type: 'sap.ui.model.type.Unit',
+                            formatOptions: {
+                                showMeasure: false
+                            }
+                        }"
+                          />
+                </t:template>
+            </t:Column>
+            <t:Column width="5rem">
+                <Label text="Measure" />
+                <t:template>
+                    <Text text="{Meins}" wrapping="false" />
+                </t:template>
+            </t:Column>
+            <t:Column width="7rem">
+                <Label text="Amount" />
+                <t:template>
+                    <ObjectNumber
+                        number="{
+                            parts: [
+                                { path: 'Dmbtr' },
+                                { path: 'Waers' }
+                            ],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {
+                                showMeasure: false
+                            }
+                        }"/>
+                </t:template>
+            </t:Column>
+            <t:Column width="7rem">
+                <Label text="Currency key" />
+                <t:template>
+                    <Text text="{Waers}" wrapping="false" />
+                </t:template>
+            </t:Column>
+        </t:columns>
+    </t:Table>
+    <OverflowToolbar style="Clear">
+        <Label text="Contents" width="10rem"/>
+        <ToolbarSpacer width="25rem"/>
+        <Button icon="sap-icon://eraser" text="Clear" press="onClear" />
+        <Button icon="sap-icon://display" text="Display" press="onDisplay"/>
+        <Button icon="sap-icon://display" text="Read" press="onRead"/>
+        <Button icon="sap-icon://create" text="Create" press="onCreate" />
+        <Button icon="sap-icon://edit" text="Update" press="onUpdate" />
+        <Button icon="sap-icon://delete" text="Delete" press="onDelete" />
+    </OverflowToolbar>
+    <f:SimpleForm id="inputForm"
+            editable="true"
+            layout="ResponsiveGridLayout"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="3"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="4"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="true" >
+            <f:content>
+                <Label text="Steel" />
+                <Input id="Steel" width="4rem" maxLength="10"/>
+
+                <Label text="Plant" />
+                <Input id="Werks" width="10rem" maxLength="4"/>
+
+                <Label text="Industry kind" />
+                <Input id="IndustryKind" width="4rem" maxLength="1"/>
+                
+                <Label text="Team Area" />
+                <Input id="Area" width="4rem" maxLength="50"/>
+               
+                <Label text="Quantity" />
+                <Input id="Menge" width="4rem" maxLength="13"/>
+                
+                <Label text="Measure" />
+                <Input id="Meins" width="8rem" maxLength="3"/>
+                
+                <Label text="Amount" />
+                <Input id="Dmbtr" width="4rem" maxLength="23"/>
+                
+                <Label text="Currency" />
+                <Input id="Waers" width="4rem" maxLength="5"/>
+            </f:content>
+    </f:SimpleForm>
+    </Page>
+</mvc:View>

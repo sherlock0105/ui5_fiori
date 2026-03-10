@@ -1,0 +1,112 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "code1.cl505.crud03.cod1cl5crud03",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.20.2",
+      "toolsId": "7cb2f0c1-92b7-4021-b8bc-67ba839a9d46"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZC505GW0006_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.120.23",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "code1.cl505.crud03.cod1cl5crud03.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "code1.cl505.crud03.cod1cl5crud03.view",
+        "async": true,
+        "viewPath": "code1.cl505.crud03.cod1cl5crud03.view"
+      },
+      "routes": [
+        {
+          "name": "RouteCRUDView03",
+          "pattern": ":?query:",
+          "target": ["TargetCRUDView03"]
+        }
+      ],
+      "targets": {
+        "TargetCRUDView03": {
+          "id": "CRUDView03",
+          "name": "CRUDView03"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "code1.cl505.crud03.cod1cl5crud03.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

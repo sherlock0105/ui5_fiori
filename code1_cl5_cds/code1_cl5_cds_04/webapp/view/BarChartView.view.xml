@@ -1,0 +1,30 @@
+<mvc:View
+    controllerName="code1.cl5.cds04.code1cl5cds04.controller.BarChartView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.suite.ui.microchart"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <VBox
+            width="30rem"
+            height="18rem"
+        >
+            <!-- 내림차순 -->
+            <!-- <InteractiveBarChart displayedBars="10" bars= "{ path: '/SumSet', sorter: { path: 'Belnr', descending: true }}"> -->
+            <m:InteractiveBarChart
+                displayedBars="10"
+                bars="{/SumSet}">
+                <m:bars>
+                    <m:InteractiveBarChartBar
+                        label="{Belnr}"
+                        value="{=parseFloat(${Belnr_sum})}"
+                    />
+                    <!-- displayedValue="{Belnr} / {Belnr_sum}" -->
+                </m:bars>
+            </m:InteractiveBarChart>
+        </VBox>
+    </Page>
+</mvc:View>

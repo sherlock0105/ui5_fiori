@@ -1,0 +1,27 @@
+<mvc:View controllerName="code1.cl5.edu01.test3.controller.RightView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:c="sap.suite.ui.microchart">
+    <Page id="rightPage" title="right">
+
+    <VBox>
+    <Button text="Main 으로 이동" press="goMain" />
+    <Button text="Base ball" press="goLeft" />
+    </VBox>
+    
+    <VBox width="30rem" height="15rem">
+            <c:InteractiveLineChart points="{ path:'ori>/valSet' }" displayedPoints="10" >
+                <c:points>
+
+                    <c:InteractiveLineChartPoint value="{=parseInt(${ori>Val})}"
+                                                label="{ori>Label}" />
+                    <!-- 모범답안
+                    <c:InteractiveLineChartPoint value="{=parseFloat(${ori>Val})}"
+                                                label="{ori>Label}" /> -->
+
+                </c:points>
+                
+            </c:InteractiveLineChart>
+    </VBox>
+    </Page>
+</mvc:View>

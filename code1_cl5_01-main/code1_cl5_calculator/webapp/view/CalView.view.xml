@@ -1,0 +1,43 @@
+<mvc:View controllerName="code1.cl5.calculator.code1cl5calculator.controller.CalView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox>
+        <Input enabled="false" width="30em" id="window" />
+
+        <HBox>
+            <Button text="1" width="2em" press="numin('1')" />
+            <Button text="2" width="2em" press="numin('2')" />
+            <Button text="3" width="2em" press="numin('3')" />
+            <Button text="+" width="2em" press="numin('+')" />
+        </HBox>
+        <HBox>
+            <Button text="4" width="2em" press="numin('4')" />
+            <Button text="5" width="2em" press="numin('5')" />
+            <Button text="6" width="2em" press="numin('6')" />
+            <Button text="-" width="2em" press="numin('-')" />
+        </HBox>
+        <HBox>
+            <Button text="7" width="2em" press="numin('7')" />
+            <Button text="8" width="2em" press="numin('8')" />
+            <Button text="9" width="2em" press="numin('9')" />
+            <Button text="*" width="2em" press="numin('*')" />
+        </HBox>
+        <HBox>
+            <Button text="." width="2em" press="numin('.')" />
+            <Button text="0" width="2em" press="numin('0')" />
+            <Button text="=" width="2em" press="numin('=')" type="Emphasized" />
+            <Button text="/" width="2em" press="numin('/')" />
+        </HBox>
+        <HBox>
+        <Button text="AC" width="11em" press="allcl" type="Accept" /> 
+        </HBox>
+
+
+        
+    </VBox>
+
+
+    </Page>
+</mvc:View>

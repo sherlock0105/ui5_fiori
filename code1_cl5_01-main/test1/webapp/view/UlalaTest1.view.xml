@@ -1,0 +1,101 @@
+<mvc:View controllerName="code1.cl5.edu01.test1.controller.UlalaTest1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <VBox>
+        <!-- 1-1 -->    
+            <Input value="{Fi1>/Fiori1Set/Value}"
+                    width="{Fi1>/Fiori1Set/Width}" description="{Fi1>/Fiori1Set/Desc}" />
+            <Input value="{Fi2>/Fiori2Set/Value}"
+                    width="{Fi2>/Fiori12Set/Width}" description="{Fi2>/Fiori2Set/Desc}" />
+            <Label text="{Label>/LabelSet/Text}" /> 
+        </VBox>
+        <!-- 1-2  -->  
+        <VBox>
+            <Label text="{lalala>LabelText}" /> 
+        </VBox>
+
+        <!-- 1-3 -->
+        <VBox>
+            <Text text="{Tanda>/text}" width="{With>width}" textAlign="{Tanda>/align}"  />
+        </VBox>
+
+        <!-- 1-33 -->
+        <VBox>
+            <Label text="{Tanda2>/text}" design="{With>design}"/>
+        </VBox>
+
+        <!-- 1-4 -->
+        <VBox>
+            <Input value="{With>Ivalue}" width="{With>Iwidth}" description="{With>Idesc}" />
+        </VBox>
+
+        <!-- 1-5 -->
+        <VBox>
+            <Button text="{15Bu>/button1/text}" width="{15Bu>/button1/width}" icon="{15Bu>/button1/icon}"  />
+            <Button text="{15Bu>/button2/text}" width="{15Bu>/button2/width}" enabled="{15Bu>/button2/enabled}" />
+        </VBox>
+
+        <!-- 1-6 -->
+        <VBox>
+            <Input value="{16In>/Input1/Ivalue}" description="{16In>/Input1/Idesc}"
+               maxLength="{16In>/Input1/Imxl}" width="{16In>/Input1/Iwith}"
+               showClearIcon="{16In>/Input1/IsCI}" />
+
+            <Input description="{16In>/Input2/Idesc}" width="{16In>/Input2/Iwith}"
+               maxLength="{16In>/Input2/Imxl}" />
+        
+        </VBox>
+
+        <!-- 1-7 -->
+        <VBox>
+            <HBox>
+                <Label text="밑변"  />
+                <Input width="30em" id="bot" />
+            </HBox>
+            <HBox>
+                <Label text="높이"  />
+                <Input width="30em" id="hi" />
+            </HBox>
+            <HBox>
+                <Label text="면적"  />
+                <Input enabled="false" width="30em" id="resu" />
+            </HBox>
+            <Button text="계산" width="15em" press="cala" />
+        </VBox>
+
+        <!-- 1-8 -->
+        <VBox>
+            <HBox>
+                <Label text="원 가격"  />
+                <Input width="30em" id="18price" description="원" />
+            </HBox>
+            <HBox>
+                <Label text="할인된 가격"  />
+                <Input width="30em" id="18dc" description="원" />
+            </HBox>
+            <HBox>
+                <Label text="할인율"  />
+                <Input enabled="false" width="30em" id="18rate" description="%" />
+                <!-- 정답: <Input editable="false" width="30em" id="18rate" description="%" /> -->
+
+            </HBox>
+            <Button text="계산" width="15em" press="caldc" />
+        </VBox>
+
+        <!-- 1-9 -->
+        <VBox>
+            <HBox>
+                <Label text="Country" />
+                <Input id="input18" />
+            </HBox>
+            <Button text="Country 체크" press="button19" />
+        </VBox>
+
+        <!-- 1-10 -->
+        <Button text="for구문" press="for110" /> 
+        <Button text="while 구문" press="whi110"  />
+        <Button text="for + while 구문" press="fwi110" />
+
+    </Page>
+</mvc:View>

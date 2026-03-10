@@ -1,0 +1,49 @@
+<mvc:View controllerName="code1.cl5.edu01.calculator.controller.calculatorView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+     <VBox>
+        <Input enabled="false" width="30em" id="window" />
+
+        <HBox>
+            <Button text="1" width="3em" press="numin('1')" />
+            <Button text="2" width="3em" press="numin('2')" />
+            <Button text="3" width="3em" press="numin('3')" />
+            <Button text="+" width="3em" press="numin('+')" />
+        </HBox> 
+        <HBox> 
+            <Button text="4" width="3em" press="numin('4')" />
+            <Button text="5" width="3em" press="numin('5')" />
+            <Button text="6" width="3em" press="numin('6')" />
+            <Button text="-" width="3em" press="numin('-')" />
+        </HBox> 
+        <HBox> 
+            <Button text="7" width="3em" press="numin('7')" />
+            <Button text="8" width="3em" press="numin('8')" />
+            <Button text="9" width="3em" press="numin('9')" />
+            <Button text="*" width="3em" press="numin('*')" />
+        </HBox> 
+        <HBox> 
+            <Button text="." width="3em" press="numin('.')" />
+            <Button text="0" width="3em" press="numin('0')" />
+            <Button text="=" width="3em" press="calc" type="Emphasized"  />
+            <Button text="/" width="3em" press="numin('/')" />
+        </HBox> 
+        <HBox>
+        <Button text="M+" width="3em" press="madd" type="Accept" />
+        <Button text="M-" width="3em" press="meinus" type="Accept" /> 
+        <Button text="MC" width="3em" press="forget" type="Accept" /> 
+        <Button text="MR" width="3em" press="recall" type="Accept" /> 
+        </HBox>
+        <HBox>
+        <Button text="C" width="6em" press="cl" type="Accept" /> 
+        <Button text="AC" width="6em" press="allcl" type="Accept" />
+        </HBox>
+
+
+        
+    </VBox>
+
+    </Page>
+</mvc:View>

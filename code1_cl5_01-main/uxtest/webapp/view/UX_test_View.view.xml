@@ -1,0 +1,32 @@
+<mvc:View controllerName="code1.uxtest01.uxtest.controller.UX_test_View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox>
+    
+        <Input id="Dan01" width="7em" placeholder="단 입력" />
+        <Input id="Dan02" width="7em" placeholder="Dan2 입력" />
+        <Input id="Operator" width="5em" placeholder="연산자" />
+
+        <Button text="출력1" press="onGugudan01" />
+        <Button text="출력2" press="onGugudan02" />
+        <Button text="total print" press="totalPrint" />
+        <Button text="eval" press="cAllculation" />
+        <Button text="+" press="addOperator('+')" />
+        <Button text="-" press="addOperator('-')" />
+        <Button text="*" press="addOperator('*')" />
+        <Button text="/" press="addOperator('/')" />
+        <Button text="%" press="addOperator('%')" />
+            <!-- addOperator 뒤 ('+')등: parameter value -->
+        
+
+
+
+
+
+
+    </VBox>
+
+    </Page>
+</mvc:View>

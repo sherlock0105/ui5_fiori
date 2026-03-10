@@ -1,0 +1,206 @@
+<mvc:View controllerName="code1.cl505.test03.code1cl5test03.controller.ShipView03"
+   xmlns:t="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m">
+    <!-- 값을 받아올 친구 -->
+    <Page id="page" title="{i18n>title}">
+        <t:Table
+            width="70rem"
+            id="shipList"
+            rows="{/ShipSet}"
+            visibleRowCount="7"
+            selectionMode="Single"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear" width="90rem">
+                    <Label text="Shipment Number"/>
+                    <HBox width="52rem">
+                        <Input id="iTknum" placeholder="Ship Num" width="6rem" maxLength="10" showClearIcon="true"/>   
+                    </HBox>
+                    <HBox>
+                        <Button icon="sap-icon://search" text="Search" press="onSearch"/>
+                    </HBox>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="7rem">
+                    <Label text="Ship Num" />
+                    <t:template>
+                        <Text
+                            text="{Tknum}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="7rem">
+                    <Label text="Shipment item" />
+                    <t:template>
+                        <Text
+                            text="{Tpnum}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Delivery" />
+                    <t:template>
+                        <Text
+                            text="{Vbeln}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Category" />
+                    <t:template>
+                        <Text
+                            text="{Vbtyp}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="4rem">
+                    <Label text="Type" />
+                    <t:template>
+                        <Text
+                            text="{Shtyp}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Container ID" />
+                    <t:template>
+                        <Text
+                            text="{Signi}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Itinerary" />
+                    <t:template>
+                        <Text
+                            text="{Tprfo}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="5rem">
+                    <Label text="Quantity" />
+                    <t:template>
+                        <Text text="{
+                            parts:[{path:'Smeng'},{path:'Meins'}],
+                            type: 'sap.ui.model.type.Unit',
+                            formatOptions: {showMeasure: false }
+                            }" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Unit" />
+                    <t:template>
+                        <Text
+                            text="{Meins}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="7rem">
+                    <Label text="Amount" />
+                    <t:template>
+                        <Text text="{
+                            parts:[{path:'Netwr'},{path:'Waerk'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {showMeasure: false }
+                            }" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Currency" />
+                    <t:template>
+                        <Text
+                            text="{Waerk}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+        <OverflowToolbar style="Clear">
+            <Label text="Shipment 등록" width="10rem" design="Bold"/>
+            <ToolbarSpacer width="25rem"/>
+            <Button icon="sap-icon://clear-all" text="Clear" press="onClear" />
+            <Button icon="sap-icon://display" text="Display" press="onDisplay"/>
+            <Button icon="sap-icon://display" text="Read" press="onRead"/>
+            <Button icon="sap-icon://edit" text="Edit" press="onEdit" />
+            <Button icon="sap-icon://create" text="Create" press="onCreate" />
+            <Button icon="sap-icon://delete" text="Delete" press="onDelete" />
+        </OverflowToolbar>
+        <HBox height="1rem"></HBox>
+        <Panel
+                    headerText="정보 입력"
+                    width="70rem"
+                    expandable="false"
+                    expanded="false"
+                    >
+            <f:SimpleForm id="inputForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="true" >
+                    <f:content>
+                        <Label text="Shipment Number" />
+                        <Input id="Tknum" width="9rem" maxLength="10"/>
+
+                        <Label text="Shipment item" />
+                        <Input id="Tpnum" width="4rem" maxLength="4"/>
+
+                        <Label text="Delivery" />
+                        <Input id="Vbeln" width="9rem" maxLength="10"/>
+                        
+                        <Label text="Doc.Cat." />
+                        <Input id="Vbtyp" width="4rem" maxLength="4"/>
+                    
+                        <Label text="Shipment type" />
+                        <Input id="Shtyp" width="4rem" maxLength="4"/>
+
+                        <Label text="Contnr ID" />
+                        <Input id="Signi" width="10rem" maxLength="20"/>      
+                            
+                        <Label text="Itinerary" />
+                        <Input id="Tprfo" width="4rem" maxLength="4"/>
+                        
+                        <Label text="Scale Qty" />
+                        <Input id="Smeng" width="10rem" maxLength="13"/>
+                        
+                        <Label text="Unit" />
+                        <Input id="Meins" width="4rem" maxLength="3"/>
+                        
+                        <Label text="Net Value" />
+                        <Input id="Netwr" width="10rem" maxLength="15"/>
+
+                        <Label text="Currency" />
+                        <Input id="Waerk" width="4rem" maxLength="5"/>
+
+                    </f:content>
+            </f:SimpleForm>
+        </Panel>
+    </Page>
+</mvc:View>

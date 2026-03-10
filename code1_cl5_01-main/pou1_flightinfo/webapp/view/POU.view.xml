@@ -1,0 +1,9 @@
+<mvc:View controllerName="code1.cl5.edu.pou1flightinfo.controller.POU"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Input placeholder="ddd" />
+
+    </Page>
+</mvc:View>

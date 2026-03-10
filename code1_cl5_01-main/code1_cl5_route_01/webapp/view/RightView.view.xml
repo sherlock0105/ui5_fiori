@@ -1,0 +1,13 @@
+<mvc:View controllerName="coed1.cl5.route01.code1cl5route01.controller.RightView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="rightPage" title="{i18n>title}">
+
+    <VBox>
+        <Label text="여기는 Right View 입니다." design="Bold" />
+    </VBox>
+    <Button text="Main으로 이동" press="goMain" />
+    <Button text="Left로 이동" press="goLeft" />
+    
+    </Page>
+</mvc:View>

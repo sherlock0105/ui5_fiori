@@ -1,0 +1,27 @@
+<mvc:View controllerName="code1cl5edu06.code1cl5edu06.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox>
+        <Button text="{/gs_button/text}"
+                icon="{/gs_button/icon}"
+                enabled="{/gs_button/enabled}" 
+                width="{Input>/gs_input/width}" />
+
+        <Input placeholder="{Input>/gs_input/placeholder}"
+               width="{Input>/gs_input/width}"
+               description="{Input>/gs_input/desc}" />
+
+        <Label text="{Label>/gs_label/text}"
+               width="{Input>/gs_Label/width}"
+               design="{Label>/gs_label/design}" />
+
+        <Text text="{/gs_text/text}"
+              width="{/gs_text/width}"
+              textAlign="{/gs_text/textAlign}" />
+    </VBox>
+
+
+    </Page>
+</mvc:View>

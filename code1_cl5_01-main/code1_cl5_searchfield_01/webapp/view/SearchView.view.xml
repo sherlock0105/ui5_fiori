@@ -1,0 +1,49 @@
+<mvc:View controllerName="code1.cl5.searchfield01.code1cl5searchfield01.controller.SearchView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    >
+
+    <Page id="page" title="{i18n>title}">
+    <HBox>
+        <SearchField id="carrid" width="10em" placeholder="항공사" search="onSearch" />
+        <SearchField id="currency" width="10em" placeholder="통화" search="onSearch" />
+    </HBox>
+
+
+
+        <t:Table
+                id="airLineList"
+				rows="{/gt_data}"
+				selectionMode="Single"
+                selectionBehavior="RowOnly"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:columns>
+					<t:Column width="5rem" >
+						<Label text="Airline" />
+						<t:template>
+							<Text text= "{Carrid}" wrapping="false" />
+						</t:template>
+					</t:Column>
+
+                    <t:Column width="11rem" >
+						<Label text="Airline Name" />
+						<t:template>
+							<Text text= "{Name}" wrapping="false" />
+						</t:template>
+					</t:Column>
+
+                    <t:Column width="11rem" >
+						<Label text="Currency" />
+						<t:template>
+							<Text text= "{Currency}" wrapping="false" />
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+
+
+    </Page>
+
+</mvc:View>

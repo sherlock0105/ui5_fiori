@@ -1,0 +1,7 @@
+{
+  "courseList": [
+    { "Id": "C001", "Name": "SAPUI5 기초", "Prof": "김철수" },
+    { "Id": "C002", "Name": "ABAP 프로그래밍", "Prof": "이영희" },
+    { "Id": "C003", "Name": "Fiori UX 디자인", "Prof": "박지성" }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+    "gs_button": {
+                    "text": "Hello",
+                    "width": "40em",
+                    "enabled": false
+                }
+}

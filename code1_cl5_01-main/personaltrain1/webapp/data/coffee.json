@@ -1,0 +1,7 @@
+{
+"CoffeeSet": [
+            { "Label": "아메리카노", "Sales": 2000, "Currency": "KRW" },
+            { "Label": "카페라떼",   "Sales": 3500, "Currency": "KRW" },
+            { "Label": "바닐라라떼", "Sales": 4000, "Currency": "KRW" }
+          ]
+}

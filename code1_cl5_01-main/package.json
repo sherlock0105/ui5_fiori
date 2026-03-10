@@ -1,0 +1,21 @@
+{
+  "name": "code1_cl5_01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "install-all": "powershell -c \"Get-ChildItem -Path . -Filter \\\"package.json\\\" -Recurse -Depth 2 | ForEach-Object { $dir = $_.DirectoryName; Write-Host \\\"--- Installing in $dir ---\\\" -ForegroundColor Green; Push-Location $dir; npm install; Pop-Location } | Out-Null; Write-Host \\\"--- All installations complete! ---\\\" -ForegroundColor Green\""
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alalyson/code1_cl5_01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alalyson/code1_cl5_01/issues"
+  },
+  "homepage": "https://github.com/alalyson/code1_cl5_01#readme"
+}

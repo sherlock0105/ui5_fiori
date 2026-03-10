@@ -1,0 +1,172 @@
+<mvc:View controllerName="code1.cl5.srv01.code1cl5srv01.controller.AirView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+
+    <Page id="page" title="{i18n>title}">
+    
+    <VBox>
+    <t:Table
+            id="airLineList"
+            visibleRowCount="5"
+            rows="{/AirlineSet}" 
+            selectionMode="Single"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="title" text="Airline"/>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="5rem">
+                    <Label text="Airline" />
+                    <t:template>
+                        <Text text="{Carrid}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem">
+                    <Label text="Airline Name" />
+                    <t:template>
+                        <Text text="{Carrname}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="5rem">
+                    <Label text="Currency" />
+                    <t:template>
+                        <Text text="{Currcode}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="15rem">
+                    <Label text="Home page" />
+                    <t:template>
+                        <Text text="{Url}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+    </VBox>
+
+<!-- 스케줄 셋 -->
+    <VBox>
+    <SearchField placeholder="Where do you want to go?" search="departfil" width="20em" id="blues" />
+
+    <t:Table
+            id="ScheduleSet"
+            visibleRowCount="35"
+            rows="{/ScheduleSet}" 
+            selectionMode="Single"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="schedule" text="Flight Schedule"/>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="5rem">
+                    <Label text="Airline" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Carrid}" wrapping="false" width="100%" textAlign="Center" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="10rem">
+                    <Label text="Connection Number" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Connid}" wrapping="false" width="100%" textAlign="Center" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem">
+                    <Label text="Depart From" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Countryfr}" wrapping="false" width="100%" textAlign="Center" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem">
+                    <Label text="Arrive To" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Countryto}" wrapping="false" width="100%" textAlign="Center" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem">
+                    <Label text="Depart from" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Airpfrom}" wrapping="false" width="100%" textAlign="Center"/>
+                    </t:template>
+                </t:Column>
+                <t:Column width="5rem">
+                    <Label text="Land to" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Airpto}" wrapping="false" width="100%" textAlign="Center" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem">
+                    <Label text="Deptarture time" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Deptime}" wrapping="false" width="100%" textAlign="Center" />
+                    </t:template>
+                </t:Column>
+                <t:Column width="8rem">
+                    <Label text="Arrival time" width="100%" textAlign="Center" />
+                    <t:template>
+                        <Text text="{Arrtime}" wrapping="false" width="100%" textAlign="Center" />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+
+        <Button text="모델확인" press="onClick" />
+
+    </VBox>
+
+    <VBox>
+    
+        <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='20em' width="50em" vizType='column'
+                vizProperties="{
+                title:{text:'Flight Payment',
+                       visible: true},
+                plotArea:{drawingEffect: 'glossy'},
+                legend:{drawingEffect: 'glossy'}
+                }" >
+
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/PriceSet}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Carrid"
+                                value="{Carrid}" />
+                        </viz.data:dimensions>
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Connid"
+                                value="{Connid}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Payment"
+                                value="{Payment}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                        values="Payment" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="Carrid" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                        values="Connid" />
+                </viz:feeds>
+
+                <viz:dependents>
+                    <viz:Popover id="idPopOver"></viz:Popover>
+                </viz:dependents>
+            </viz:VizFrame>
+    
+    </VBox>
+
+    </Page>
+</mvc:View>

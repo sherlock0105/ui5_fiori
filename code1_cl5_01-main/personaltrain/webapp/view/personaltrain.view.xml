@@ -1,0 +1,30 @@
+<mvc:View controllerName="pt.personaltrain.controller.personaltrain"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <VBox>
+        <Button text="수업 명" press="onClick('수업명')" />
+        <Button text="강사 명" press="onClick('강사명')" />
+        <Button text="반 회차" press="onClick('반회차')" />
+
+        <Button text="Button1" press="flight" />
+    </VBox>
+    <VBox>
+        <Label id="txt" text="오늘은 금요일" width="20em" />
+    <HBox>
+        <Button text="left" press="left"  />
+        <Button text="center" press="center" />
+        <Button text="right" press="right" />
+    </HBox>
+    <VBox>
+        <Label id="sat" text="오늘은 토요일" width="20em" />
+        <Button text="체크" press="mock" />
+    </VBox>
+<Text text="r--------------1030실습---------------ㄱ" />
+    <VBox>
+        <Button text="1030 실습" press="grade" />
+    </VBox>
+
+    </VBox>
+    </Page>
+</mvc:View>

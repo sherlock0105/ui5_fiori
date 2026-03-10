@@ -1,0 +1,194 @@
+[
+  {
+    "Airline": "AA",
+    "Connection": 17,
+    "Currency": "USD",
+    "Price": 5498.22
+  },
+  {
+    "Airline": "AA",
+    "Connection": 64,
+    "Currency": "USD",
+    "Price": 5498.22
+  },
+  {
+    "Airline": "AZ",
+    "Connection": 555,
+    "Currency": "EUR",
+    "Price": 2405
+  },
+  {
+    "Airline": "AZ",
+    "Connection": 788,
+    "Currency": "EUR",
+    "Price": 13390
+  },
+  {
+    "Airline": "AZ",
+    "Connection": 789,
+    "Currency": "EUR",
+    "Price": 13390
+  },
+  {
+    "Airline": "AZ",
+    "Connection": 790,
+    "Currency": "EUR",
+    "Price": 13182
+  },
+  {
+    "Airline": "DL",
+    "Connection": 106,
+    "Currency": "USD",
+    "Price": 7943.13
+  },
+  {
+    "Airline": "DL",
+    "Connection": 1699,
+    "Currency": "USD",
+    "Price": 5498.22
+  },
+  {
+    "Airline": "DL",
+    "Connection": 1984,
+    "Currency": "USD",
+    "Price": 5498.22
+  },
+  {
+    "Airline": "JL",
+    "Connection": 407,
+    "Currency": "JPY",
+    "Price": 1379768
+  },
+  {
+    "Airline": "JL",
+    "Connection": 408,
+    "Currency": "JPY",
+    "Price": 1379768
+  },
+  {
+    "Airline": "KA",
+    "Connection": 17,
+    "Currency": "KRW",
+    "Price": 549822
+  },
+  {
+    "Airline": "KA",
+    "Connection": 64,
+    "Currency": "KRW",
+    "Price": 549822
+  },
+  {
+    "Airline": "KA",
+    "Connection": 555,
+    "Currency": "KRW",
+    "Price": 271210
+  },
+  {
+    "Airline": "KA",
+    "Connection": 788,
+    "Currency": "KRW",
+    "Price": 1509938.8
+  },
+  {
+    "Airline": "KA",
+    "Connection": 789,
+    "Currency": "KRW",
+    "Price": 1509938.8
+  },
+  {
+    "Airline": "KA",
+    "Connection": 790,
+    "Currency": "KRW",
+    "Price": 1486483.44
+  },
+  {
+    "Airline": "LH",
+    "Connection": 400,
+    "Currency": "EUR",
+    "Price": 9990
+  },
+  {
+    "Airline": "LH",
+    "Connection": 401,
+    "Currency": "EUR",
+    "Price": 9990
+  },
+  {
+    "Airline": "LH",
+    "Connection": 402,
+    "Currency": "EUR",
+    "Price": 9990
+  },
+  {
+    "Airline": "LH",
+    "Connection": 2402,
+    "Currency": "EUR",
+    "Price": 3630
+  },
+  {
+    "Airline": "LH",
+    "Connection": 2407,
+    "Currency": "EUR",
+    "Price": 3630
+  },
+  {
+    "Airline": "QF",
+    "Connection": 5,
+    "Currency": "AUD",
+    "Price": 10252.32
+  },
+  {
+    "Airline": "QF",
+    "Connection": 6,
+    "Currency": "AUD",
+    "Price": 10252.32
+  },
+  {
+    "Airline": "SQ",
+    "Connection": 2,
+    "Currency": "SGD",
+    "Price": 30160.52
+  },
+  {
+"Airline": "SQ",
+    "Connection": 15,
+    "Currency": "SGD",
+    "Price": 30160.52
+  },
+  {
+    "Airline": "SQ",
+    "Connection": 158,
+    "Currency": "SGD",
+    "Price": 6432.27
+  },
+  {
+    "Airline": "SQ",
+    "Connection": 988,
+    "Currency": "SGD",
+    "Price": 11831.95
+  },
+  {
+    "Airline": "UA",
+    "Connection": 941,
+    "Currency": "USD",
+    "Price": 13197.3
+  },
+  {
+    "Airline": "UA",
+    "Connection": 3504,
+    "Currency": "USD",
+    "Price": 13197.3
+  },
+  {
+    "Airline": "UA",
+    "Connection": 3516,
+    "Currency": "USD",
+    "Price": 9165.15
+  },
+  {
+    "Airline": "UA",
+    "Connection": 3517,
+    "Currency": "USD",
+    "Price": 9165.15
+  }
+]

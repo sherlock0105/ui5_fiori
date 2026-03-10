@@ -1,0 +1,62 @@
+<mvc:View controllerName="code1.cl5.edu01.test3.controller.LeftView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:c="sap.suite.ui.microchart"
+    xmlns:t="sap.ui.table">
+    <Page id="leftPage" title="left">
+        <VBox>
+            <HBox>
+                <Button text="Main으로 이동" press="goMain" />
+                <Button text="Home Count" press="goRight" />
+            </HBox>
+        </VBox>
+
+        <VBox>
+            <t:Table
+            visibleRowCount="5"
+            rows="{left>/TeamSet}" 
+            selectionMode="Single" 
+            selectionBehavior="Row"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="BaseBall" text="BaseBall"/>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="11rem">
+                    <Label text="Team" />
+                    <t:template>
+                        <Text text="{left>Team}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Year" />
+                    <t:template>
+                        <Text text="{left>Year}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Area" />
+                    <t:template>
+                        <Text text="{left>Area}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Win" />
+                    <t:template>
+                        <Text text="{left>Win}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                
+            </t:columns>	
+        </t:Table>
+    </VBox>
+    
+    </Page>
+</mvc:View>

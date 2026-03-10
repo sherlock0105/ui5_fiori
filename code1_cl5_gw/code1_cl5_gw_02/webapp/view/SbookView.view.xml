@@ -1,0 +1,83 @@
+<mvc:View
+    controllerName="code1.cl5.gw02.code1cl5gw02.controller.SbookView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+>
+    <Page id="page" title="{i18n>title}">
+        <HBox>
+        <SearchField id="carrid" width="20em" placeholder="항공사" search="onSearch" />
+    </HBox>
+        <viz:VizFrame
+            id="idVizFrame"
+            uiConfig="{applicationSet:'fiori'}"
+            height='20em'
+            width="100%"
+            vizType='column'
+            vizProperties="{
+                title:{text:'비즈차트',
+                       visible: false},
+                plotArea:{drawingEffect: 'glossy'},
+                legend:{drawingEffect: 'glossy'}
+                }">
+            <viz:dataset>
+                <viz.data:FlattenedDataset data="{/SbookSet}">
+                    <viz.data:dimensions>
+                        <viz.data:DimensionDefinition name="Carrid"  value="{Carrid}" />
+                        <viz.data:DimensionDefinition name="Connid"  value="{Connid}" />
+                    </viz.data:dimensions>
+                    <viz.data:measures>
+                        <viz.data:MeasureDefinition name="Cnt" value="{Cnt}" />
+                        <viz.data:MeasureDefinition name="Amount" value="{Amount}" />
+                        <viz.data:MeasureDefinition name="Weight" value="{Weight}" />
+                    </viz.data:measures>
+                </viz.data:FlattenedDataset>
+            </viz:dataset>
+            <viz:feeds>
+                <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="Cnt"/>
+                <viz.feeds:FeedItem id='valueAxisFeed2' uid="valueAxis" type="Measure" values="Amount"/>
+                <viz.feeds:FeedItem id='valueAxisFeed3' uid="valueAxis" type="Measure" values="Weight"/>
+                <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Carrid"/>
+                <viz.feeds:FeedItem id='categoryAxisFeed2' uid="categoryAxis" type="Dimension" values="Connid"/>
+            </viz:feeds>
+            <viz:dependents>
+                <viz:Popover id="idPopOver" />
+            </viz:dependents>
+        </viz:VizFrame>
+        <viz:VizFrame id="idVizFrame2" uiConfig="{applicationSet:'fiori'}"  height='30em' width="100%" vizType='bar'
+                    vizProperties="{
+                    plotArea:{
+                        drawingEffect:'glossy',
+                        colorPalette:['#2563EB','#06B6D4','#10B981']
+                    },
+                    legend:{visible:true, drawingEffect: 'glossy'}
+                    }">
+            <viz:dataset>
+                <viz.data:FlattenedDataset data="{/SbookSet}">
+                    <viz.data:dimensions>
+                        <viz.data:DimensionDefinition name="Carrid" value="{Carrid}" />
+                        <viz.data:DimensionDefinition name="Connid" value="{Connid}" />              
+                    </viz.data:dimensions>
+                    <viz.data:measures>
+                        <viz.data:MeasureDefinition name="Cnt" value="{Cnt}" />
+                        <viz.data:MeasureDefinition name="Amount" value="{Amount}" />           
+                        <viz.data:MeasureDefinition name="Weight" value="{Weight}" />
+                    </viz.data:measures>
+                </viz.data:FlattenedDataset>
+            </viz:dataset>
+
+            <viz:feeds>
+                <viz.feeds:FeedItem id='valueAxisFeed4'  uid="valueAxis"  type="Measure" values="Cnt"/>
+                <viz.feeds:FeedItem id='valueAxisFeed5'  uid="valueAxis"  type="Measure" values="Amount"/>
+                <viz.feeds:FeedItem id='valueAxisFeed6' uid="valueAxis" type="Measure" values="Weight"/>            
+                <viz.feeds:FeedItem id='categoryAxisFeed3' uid="categoryAxis" type="Dimension" values="Carrid" />  
+                <viz.feeds:FeedItem id='categoryAxisFeed4' uid="categoryAxis" type="Dimension" values="Connid" />
+            </viz:feeds>
+            <viz:dependents>
+                <viz:Popover id="idPopOver2" />
+            </viz:dependents>
+        </viz:VizFrame>
+    </Page>
+</mvc:View>

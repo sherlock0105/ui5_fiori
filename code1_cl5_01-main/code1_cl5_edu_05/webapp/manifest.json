@@ -1,0 +1,98 @@
+{
+  "_version": "1.76.0",
+  "sap.app": {
+    "id": "code1.cl5.edu05.code1cl5edu05",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.19.1",
+      "toolsId": "fa7dd5a0-d306-4b85-a430-96fc4ae96b88"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.141.3",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "code1.cl5.edu05.code1cl5edu05.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "code1.cl5.edu05.code1cl5edu05.view",
+        "async": true,
+        "viewPath": "code1.cl5.edu05.code1cl5edu05.view"
+      },
+      "routes": [
+        {
+          "name": "RouteEdu05View",
+          "pattern": ":?query:",
+          "target": [
+            "TargetEdu05View"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetEdu05View": {
+          "id": "Edu05View",
+          "name": "Edu05View"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "code1.cl5.edu05.code1cl5edu05.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

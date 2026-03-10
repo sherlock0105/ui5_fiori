@@ -1,0 +1,27 @@
+<mvc:View controllerName="code1.cl5.edu08.code1cl5edu08.controller.Edu08View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <VBox>
+<!-- internal table 수업 -->
+            <Text text="r--------------수업-----------------ㄱ" />
+            <Button text="배열확인" press="onArrayCheck" />  
+            <Button text="JSON WA 확인" press="onJsonWaCheck" />
+            <Button text="JSON Itab 확인" press="onJsonItabCheck"/>
+        
+<!-- internal table 실습1 -->
+            <Text text="r--------------실습1-----------------ㄱ" />
+            <Button text="Itab 실습1" press="onItab01" />
+
+<!-- internal table 실습2 -->
+            <Text text="r--------------실습2-----------------ㄱ" />
+            <Button text="Airline 변경" press="onAirline" />
+
+<!-- internal table 마트료시카 수업 -->
+             <Text text="r--------------마트료시카 수업-----------------ㄱ" />
+             <Button text="다른 형태 Itab" press="onItab02" />
+
+        </VBox>
+    </Page>
+</mvc:View>

@@ -1,0 +1,44 @@
+<mvc:View controllerName="code1.cl5.edu01.code1cl5edu01.controller.Edu01View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+
+    <Text text="SAP Code1 Class5 Fiori Text" width="200px" textAlign="Center" />
+    <Label text="Class 5 Fighting" width="20rem" design="Bold" />
+    <VBox >
+        <Button text="Airline" enabled="false" icon="Sap-icon://flight" />
+        <Button text="Bell" icon="sap-icon://bell-2" width="100px" press="chime()" />
+        <Button text="Setting" icon="sap-icon://action-settings" width="20em" press="message()" />
+
+        <Input id="input1" width="20em" description="이것은 입력필드" showClearIcon="true" required="true"
+               placeholder="ID 입력" enabled="true" maxLength="10" value="SAP code1" />
+    </VBox>
+    <VBox>
+        <HBox>
+            <Text text="숫자 입력1" width="3em" />
+            <Input id="number1" width="7em" showClearIcon="true" type="Number" />
+        </HBox>
+        <HBox>
+            <Text text="숫자 입력2" width="3em" />
+            <Input id="number2" width="7em" showClearIcon="true" type="Number" />
+        </HBox>
+        <HBox>
+            <Text text="결과" width="3em" />
+            <Input id="number3" width="7em" showClearIcon="true" type="Number" />
+        </HBox>
+        <Button text="확인" width="5em" icon="sap-icon://simulate" press="check_val2" />
+    </VBox>
+
+ <!--   
+   <HBox>
+       <Input type="Number" name="Input1" />
+       <Input type="Number" name="Input2" />
+   </HBox>
+   <VBox>
+       <Input type="Number" name="sum" />
+       <Button text="calculate" icon="sap-icon://simulate" width="100px" press="mathter()" />
+   </VBox>
+ -->
+    </Page>
+</mvc:View>

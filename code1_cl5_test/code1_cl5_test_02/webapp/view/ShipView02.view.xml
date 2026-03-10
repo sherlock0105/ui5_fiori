@@ -1,0 +1,47 @@
+<mvc:View controllerName="code1.cl505.test02.code1cl5test02.controller.ShipView02"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+    <Page id="page" title="{i18n>title}">
+    <!-- VizFrame column chart -->
+        <viz:VizFrame
+            id="idVizFrame"
+            uiConfig="{applicationSet:'fiori'}"
+            height='40em'
+            width="60rem"
+            vizType='column'
+            vizProperties="{
+                title:{text:'Shipment Summary',
+                       visible: true},
+                plotArea:{
+                        drawingEffect: 'normal', 
+                        colorPalette:['#1B90FF','#F26018'],
+                        dataLabel: {visible: true}
+                         },
+                legend:{drawingEffect: 'normal'}
+                }">
+            <!-- Dimension 분류 기준, Measure 수치 값 -->
+            <viz:dataset>
+                <viz.data:FlattenedDataset data="{/ShipSet}">
+                    <viz.data:dimensions>
+                        <viz.data:DimensionDefinition name="Shipment Number" value="{Tknum}" />
+                    </viz.data:dimensions>
+                    <viz.data:measures>
+                        <viz.data:MeasureDefinition name="Scale Quantity" value="{Smeng_sum}"/>
+                        <viz.data:MeasureDefinition name="Net Value" value="{Netwr_sum}"/>
+                    </viz.data:measures>
+                </viz.data:FlattenedDataset>
+            </viz:dataset>
+            <viz:feeds>
+                <viz.feeds:FeedItem id='valueAxisFeed2' uid="valueAxis" type="Measure" values="Scale Quantity"/>
+                <viz.feeds:FeedItem id='valueAxisFeed3' uid="valueAxis" type="Measure" values="Net Value"/>
+                <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Shipment Number"/>
+            </viz:feeds>
+            <viz:dependents>
+                <viz:Popover id="idPopOver" />
+            </viz:dependents>
+        </viz:VizFrame>
+    </Page>
+</mvc:View>

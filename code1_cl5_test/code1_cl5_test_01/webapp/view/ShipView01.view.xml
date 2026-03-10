@@ -1,0 +1,133 @@
+<mvc:View controllerName="code1.cl505.cdsship.code1cl5test01.controller.ShipView01"
+   xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <Button text="Search" press="onSearch" icon="sap-icon://search"/>
+    <!-- 값을 받아올 친구 -->
+    <Input id="iTknum" width="8rem" placeholder="Shipment Num" showClearIcon="true"/>
+    <!-- Panel design 이 이뻐서 사용했습니다. -->
+                <Panel
+                expandable="false"
+                expanded="false" >
+        <t:Table
+            visibleRowCount="10"
+            id="ShipList"
+            rows="{/ShipSet}"
+            selectionMode="Single"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title
+                        id="title"
+                        text="Shipment Management"
+                        width="20rem"
+                    />
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="7rem">
+                    <Label text="Ship Num" />
+                    <t:template>
+                        <Text
+                            text="{Tknum}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="7rem">
+                    <Label text="Shipment item" />
+                    <t:template>
+                        <Text
+                            text="{Tpnum}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column width="6rem">
+                    <Label text="Delivery" />
+                    <t:template>
+                        <Text
+                            text="{Vbeln}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+               <t:Column width="6rem">
+                    <Label text="Category" />
+                    <t:template>
+                        <Text
+                            text="{Vbtyp}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+               <t:Column width="4rem">
+                    <Label text="Type" />
+                    <t:template>
+                        <Text
+                            text="{Shtyp}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+               <t:Column width="6rem">
+                    <Label text="Container ID" />
+                    <t:template>
+                        <Text
+                            text="{Signi}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+               <t:Column width="6rem">
+                    <Label text="Itinerary" />
+                    <t:template>
+                        <Text
+                            text="{Tprfo}"
+                            wrapping="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <!-- 통화키 연결 -->
+                <t:Column width="5rem">
+                    <Label text="Quantity" />
+                    <t:template>
+                        <ObjectNumber
+                            number="{
+                                parts: [
+                                    { path: 'Smeng' },
+                                    { path: 'Meins' }
+                                ],
+                                type: 'sap.ui.model.type.Unit',
+                                formatOptions: {
+                                    showMeasure: true
+                                }
+                            }"
+                            />
+                    </t:template>
+             <!-- 통화키 연결 -->
+                </t:Column>
+                <t:Column width="7rem">
+                    <Label text="Amount" />
+                    <t:template>
+                        <ObjectNumber
+                            number="{
+                                parts: [
+                                    { path: 'Netwr' },
+                                    { path: 'Waerk' }
+                                ],
+                                type: 'sap.ui.model.type.Currency',
+                                formatOptions: {
+                                    showMeasure: true
+                                }
+                            }"/>
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+      </Panel>
+    </Page>
+</mvc:View>

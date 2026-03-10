@@ -1,0 +1,91 @@
+<mvc:View controllerName="code1cl5edu02.code1cl5edu02.controller.code1_cl5_edu_02"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox>
+
+     <Text text="SAP Code1 Class5" />
+     <Text text="Class 5 이상현" />
+     <Label text="구로디지털단지 2번출구" />
+     <Label text="걸어서 10분 거리" design="Bold" />
+
+        <HBox>
+            <Label text="ID" width="10em" />
+            <Input id="id" width="10em" />
+        </HBox>
+
+        <HBox>
+            <Label text="Name" width="10em" />
+            <Input id="name" width="10em" />
+        </HBox>
+
+        <HBox>
+            <Label text="Age" />
+            <Input id="age" width="10em" type="Number" />
+        </HBox>
+        <Input id="address" width="10em" showClearIcon="true" placeholder="address" />
+        <HBox>
+        <Input id="hobby" width="10em" placeholder="hobby" />
+        <Label text="Please write only one hobby." />
+        </HBox>
+
+    </VBox>
+
+    <VBox> <!-- 3. 계산기 -->
+        <Input id="num1" width="10em" showClearIcon="true" placeholder="1st Number" />
+        <Input id="num2" width="10em" showClearIcon="true" placeholder="2nd Number" />
+        <Input id="num3" width="10em" showClearIcon="true" placeholder="Result" />
+        <Button text="Calculate" width="15em" press="cal_val" />
+    </VBox>
+
+    
+    <VBox> <!-- 4. 삼각형 계산 -->
+        <Input id="low" width="15em" showClearIcon="true" placeholder="밑변" />
+        <Input id="hi" width="15em" showClearIcon="true" placeholder="높이" />
+        <Input id="nol" width="15em" showClearIcon="true" placeholder="삼각형 넓이" />
+        <Button text="Calculate" width="15em" press="tri_nol" />
+    </VBox>
+
+    <VBox> <!-- 5. 할인율 계산 -->
+        <HBox>
+            <Label text="Price" design="Bold" />
+            <Input id="price" width="10em" />
+        </HBox>
+        <HBox>
+            <Label text="Paid" design="Bold" />
+            <Input id="paid" width="10em" />
+        </HBox>
+        <Button text="D/C rate" width="15em" press="dc_rate" />
+        <HBox>
+            <Label text="DC rate" design="Bold" />
+            <Input id="dcr" width="10em" />
+            <Text text="%" />
+        </HBox>
+        
+    </VBox>
+
+    <VBox> <!-- 7. 문자 정렬버튼 -->
+        <Text text="오늘은 금요일" width="20em" id="txt" />
+        <HBox>
+        <Button id="left" text="Begin" press="leftie"/>
+        <Button id="center" text="Center" press="centre"/>
+        <Button id="right" text="Right" press="rightie"/>
+        </HBox>
+    </VBox>
+
+    <!-- Label 문자 수정 -->
+    <VBox>
+    
+    <Label id="lab" text="내일부터 주말" width="200em" />
+    <Input id="insert" placeholder="바꿀 문자열" width="20em" />
+    <Button text="문자열 바꾸기" press="modi" />
+
+    </VBox>
+
+
+
+
+    </Page>
+
+</mvc:View>

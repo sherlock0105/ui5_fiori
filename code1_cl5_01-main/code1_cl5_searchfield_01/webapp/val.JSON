@@ -1,0 +1,11 @@
+{
+    "gt_data": [
+        {"Carrid": "AA",  "Name": "American Air", "Currency": "USD"  },
+        {"Carrid": "LH",  "Name": "Luft Hansa",   "Currency": "EUR"  },
+        {"Carrid": "KA",  "Name": "Korean Air",   "Currency": "KRW"  },
+        {"Carrid": "VA",  "Name": "Vietnam Air",  "Currency": "VND"  },
+        {"Carrid": "DL",  "Name": "Delta Air",    "Currency": "USD"  },
+        {"Carrid": "QA",  "Name": "Qatar Air",    "Currency": "USD"  },
+        {"Carrid": "BR",  "Name": "Brunei Royal", "Currency": "BND"  }
+        ]
+}

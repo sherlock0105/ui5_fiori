@@ -1,0 +1,8 @@
+<mvc:View controllerName="code1.cl5.edu01.test3.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="main">
+        <Button text="Base ball" press="goLeft" />
+        <Button text="Home Count" press="goRight" />
+    </Page>
+</mvc:View>

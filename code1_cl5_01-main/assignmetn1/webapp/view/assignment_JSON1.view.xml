@@ -1,0 +1,57 @@
+<mvc:View controllerName="assignmentjson1.assignmetnjson1.controller.assignment_JSON1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+<!-- 1029 비행기 for, switch 실습 -->
+    <Button text="button1" width="20em" press="flight"/>
+    <Button text="button2" width="20em" press="Flight"/>
+
+<!-- 1029 걷기 if, MessageToast 실습  -->
+    <VBox>
+        <HBox>
+            <Label text="Walking Count" />
+            <Input id="walk" />
+        </HBox>
+        <Button text="Walking 체크" press="check" />
+    </VBox>
+
+<!-- 1029 이름반번호 체크 -->
+    <VBox>
+        <HBox>
+            <Label text="이름" />
+            <Input id="qname" />
+        </HBox>
+        <HBox>
+            <Label text="반" />
+            <Input id="qclass" />
+        </HBox>
+        <HBox>
+            <Label text="번호" />
+            <Input id="qnumber" />
+        </HBox>
+        <Button text="내역 체크" press="qcheck" />
+    </VBox>
+
+<!-- 1029 로그인 if || switch -->
+    <VBox>
+    
+        <HBox>
+            <Label text="User ID" width="5em" />
+            <Input id="uid" width="10em" showClearIcon="true" />
+        </HBox>
+
+        <HBox>
+            <Label text="Pw" width="5em" />
+            <Input id="upw" width="10em" type="Password" showClearIcon="true" />    
+        </HBox>
+        <Button text="로그인" width="15em" press="ulogin" />
+    
+    </VBox>
+
+
+
+
+
+
+    </Page>
+</mvc:View>

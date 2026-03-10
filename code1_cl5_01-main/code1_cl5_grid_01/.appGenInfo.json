@@ -1,0 +1,24 @@
+{
+  "generationParameters": {
+    "generationDate": "Fri Oct 31 2025 09:42:57 GMT+0900 (한국 표준시)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "None",
+    "metadataFilename": "",
+    "serviceUrl": "N/A",
+    "appName": "code1_cl5_grid_01",
+    "appTitle": "Grid Table 실습",
+    "appDescription": "Grid Table 실습",
+    "appNamespace": "code1.cl5.grid01",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.39",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.19.1",
+    "template": "Basic",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

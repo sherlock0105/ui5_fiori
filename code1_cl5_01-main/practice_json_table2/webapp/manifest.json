@@ -1,0 +1,98 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "practicejsontable2.practicejsontable2",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.19.1",
+      "toolsId": "76f7e4c4-9fd0-4e52-bb35-19d7e312acf4"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.120.39",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "practicejsontable2.practicejsontable2.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "practicejsontable2.practicejsontable2.view",
+        "async": true,
+        "viewPath": "practicejsontable2.practicejsontable2.view"
+      },
+      "routes": [
+        {
+          "name": "Routepractice_json_table2",
+          "pattern": ":?query:",
+          "target": [
+            "Targetpractice_json_table2"
+          ]
+        }
+      ],
+      "targets": {
+        "Targetpractice_json_table2": {
+          "id": "practice_json_table2",
+          "name": "practice_json_table2"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "practicejsontable2.practicejsontable2.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<mvc:View controllerName="coed1.cl5.route01.code1cl5route01.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <App id="app">
+    </App>
+</mvc:View>

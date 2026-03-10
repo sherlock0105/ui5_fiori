@@ -1,0 +1,104 @@
+<mvc:View controllerName="code1.cl5.grid01.code1cl5grid01.controller.GridView"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified">
+ 
+    
+    <Page id="page" title="{i18n>title}">
+        <t:Table
+            visibleRowCount="5"
+            rows="{/AirlineSet}" 
+            selectionMode="Single" 
+            selectionBehavior="Row"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="title" text="Airline"/>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="11rem">
+                    <Label text="Airline" />
+                    <t:template>
+                        <Text text="{Carrid}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Airline Name" />
+                    <t:template>
+                        <Text text="{Carrname}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Price" />
+                    <t:template>
+                        <u:Currency value="{Price}" currency="{Currkey}"/>
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="20rem">
+                    <Label text="Currency Key" />
+                    <t:template>
+                        <Text text="{
+                        parts:[{path:'Price'},{path:'Currkey'}],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {showMeasure: true }
+                        }" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                
+            </t:columns>	
+        </t:Table>
+
+        <t:Table
+            visibleRowCount="5"
+            rows="{mat>/matSet}" 
+            selectionMode="Single" 
+            selectionBehavior="Row"
+            paste="onPaste"
+            ariaLabelledBy="title">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="MatTitle" text="Material List"/>
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column width="11rem">
+                    <Label text="Material" />
+                    <t:template>
+                        <Text text="{mat>Matnr}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Material Name" />
+                    <t:template>
+                        <Text text="{mat>Werks}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Plant" />
+                    <t:template>
+                        <Text text="{mat>Maktx}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column width="11rem">
+                    <Label text="Storage Location" />
+                    <t:template>
+                        <Text text="{mat>Lgort}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                
+            </t:columns>	
+        </t:Table>
+
+    </Page>
+</mvc:View>

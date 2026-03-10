@@ -1,0 +1,77 @@
+<mvc:View controllerName="practicejsontable2.practicejsontable2.controller.practice_json_table2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data">
+
+    <Page id="page" title="{i18n>title}">
+    <VBox>
+            <viz:VizFrame id="iDVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='20em' width="30em" vizType='pie'
+                vizProperties="{
+                title:{text:'Pie',
+                       visible: true},
+                plotArea:{drawingEffect: 'normal'},
+                legend:{drawingEffect: 'normal'}
+                }" >
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{Month>/monSet}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Mon"
+                                value="{Month>Label}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Temp"
+                                value="{Month>Val}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='size' uid="size" type="Measure"
+                        values="Temp" />
+                    <viz.feeds:FeedItem id='color' uid="color" type="Dimension"
+                        values="Mon" />
+                </viz:feeds>
+                <viz:dependents>
+                    <viz:Popover id="iDPopOver"></viz:Popover>
+                </viz:dependents>
+            </viz:VizFrame>
+
+
+            <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='20em' width="30em" vizType='bar'
+                vizProperties="{
+                title:{text:'Bar',
+                       visible: true},
+                plotArea:{drawingEffect: 'normal'},
+                legend:{drawingEffect: 'normal'}
+                }" >
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/carSet}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="차종"
+                                value="{Label}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="판매량"
+                                value="{Car}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="판매량" />
+                    <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension"
+                        values="차종" />
+                </viz:feeds>
+                <viz:dependents>
+                    <viz:Popover id="idPopOver"></viz:Popover>
+                </viz:dependents>
+            </viz:VizFrame>
+
+    </VBox>
+    </Page>
+</mvc:View>

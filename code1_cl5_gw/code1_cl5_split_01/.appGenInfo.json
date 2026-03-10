@@ -1,0 +1,23 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Feb 24 2026 10:21:32 GMT+0900 (한국 표준시)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://bgissap3.bgissap.co.kr:8000/sap/opu/odata/sap/ZC505GW0007_SRV",
+    "appName": "code1_cl5_split_01",
+    "appTitle": "Split with Event",
+    "appDescription": "Split with Event",
+    "appNamespace": "code1.cl505.gw0007",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.120.23",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.2",
+    "template": "Basic V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

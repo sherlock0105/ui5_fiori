@@ -1,0 +1,24 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Oct 28 2025 09:26:56 GMT+0900 (한국 표준시)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "None",
+    "metadataFilename": "",
+    "serviceUrl": "N/A",
+    "appName": "code1_cl5_edu_04",
+    "appTitle": "다중 반복문 및 반복문",
+    "appDescription": "다양한 반복문 실습",
+    "appNamespace": "code.cl5.edu04",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.141.3",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.19.1",
+    "template": "Basic",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

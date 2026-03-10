@@ -1,0 +1,20 @@
+<mvc:View controllerName="code.cl5.edu04.code1cl5edu04.controller.Edu04View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+        <Button text="for체크1" press="forCheck01" />
+        <VBox>
+            <Button text="구구단 출력" press="onGugudan" width="20em" />
+            <HBox>
+                <Label text="단 입력" width="10em" />
+                <Input id="gugu" width="10em" />
+            </HBox>
+            <Button text="N단 출력" press="onGugudan_n" width="10em" />
+            <Button text="이차원배열 확인" press="onMultiArray" />
+            <Button text="for체크2" press="forCheck02" />
+            <Button text="while 체크" press="whileCheck01" />
+        </VBox>
+
+    </Page>
+</mvc:View>

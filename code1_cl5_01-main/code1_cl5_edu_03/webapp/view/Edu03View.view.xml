@@ -1,0 +1,59 @@
+<mvc:View controllerName="code1.cl5.edu03.code1cl5edu03.controller.Edu03View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+
+    <VBox>
+        <Button text="결과확인" press=".onCheck01" /> <!-- press 이름 앞에 .을 붙이기도 함.
+                                                        controll에서 입력할때는 . 빼고 입력해야됨 -->
+    </VBox>
+
+        <Input id="Iclass" placeholder="Input Class" width="12em"/>
+        <Button text="Click" press="ifCheck01" width="12em" />
+
+    <VBox>
+        <Input id="number2" width="10em" />
+        <Button text="Case 확인" press="caseCheck01" />
+        <Button text="for 체크1" press="forCheck01" />
+    </VBox>
+
+
+<!-- 1번 -->
+    <VBox>
+        <Button text="IF체크" press="ifCheck02" width="20em" />
+    </VBox>
+<!-- 2번 -->
+    <VBox>
+        <HBox>
+            <Label text="City" width="5em" />
+            <Input id="city" width="20em" />
+        </HBox>
+        <Button text="switch 체크" press="caseCheck02" width="20em" />
+    </VBox>
+<!-- 3번 -->
+    <VBox>
+        <HBox>
+            <Text text="1st Number" width="10em" />
+            <Input id="1stNum" width="10em" />
+            <Text text="2nd Number" width="10em" />
+            <Input id="2ndNum" width="10em"/>
+        </HBox>
+        <Button text="크기비교" press="compareNum" width="20em" />
+    </VBox>
+<!-- 배열 -->
+    <VBox>
+        <HBox>
+            <Text text="Number" width="10em" />
+            <Input id="match" width="20em" />
+        </HBox>
+        <Button text="Match 체크" press="matchNum" width="20em" />
+    </VBox>
+    
+
+
+
+
+
+
+    </Page>
+</mvc:View>

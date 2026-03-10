@@ -1,0 +1,29 @@
+<mvc:View controllerName="personal.controller.personal_training"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <Label text="Calculator" width="22em" textAlign="Center" design="Bold" />
+    <VBox>
+        <HBox>
+            <!-- <Label text="Number1" width="10em" /> -->
+            <Input id="num1" width="10em" type="Number" placeholder="Insert Number1" />
+            <!-- <Label text="Number2" width="10em" /> -->
+            <Input id="num2" width="10em" type="Number" placeholder="Insert Number2" />
+        </HBox>
+
+        <HBox>
+        <Button text="+" width="10em" press="add()" />
+        <Button text="-" width="10em" press="min()" />
+        </HBox>
+        
+        <HBox>
+        <Button text="*" width="10em" press="mul()" />
+        <Button text="/" width="10em" press="div()" />
+        </HBox>
+
+    </VBox>
+    
+    <Input id="res" width="20em" editable="false" />
+
+    </Page>
+</mvc:View>
