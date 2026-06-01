@@ -1,0 +1,355 @@
+<mvc:View controllerName="ze3.fi.bpmaster.ze3fibpmaster.controller.BpMasterView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+
+    <!-- ============================================================
+         상세/수정/생성 다이얼로그 (lifecycle 관리만, 직접 렌더링 X)
+    ============================================================ -->
+    <mvc:dependents>
+        <Dialog id="detailDialog"
+            title="{= ${view>/mode} === 'CREATE' ? '신규 BP 생성' : (${view>/mode} === 'EDIT' ? 'BP 수정' : 'BP 상세 조회') }"
+            contentWidth="60rem"
+            contentHeight="620px"
+            draggable="true"
+            resizable="true"
+            stretch="{device>/system/phone}">
+
+            <content>
+                <VBox class="bpDialogBox" width="100%">
+
+                        <MessageStrip
+                            visible="{= ${view>/mode} === 'CREATE'}"
+                            text="신규 BP 정보를 입력하고 저장 버튼을 클릭하세요."
+                            type="Information" showIcon="true"
+                            class="bpModeBanner"/>
+
+                        <!-- 기본 정보 -->
+                        <Panel headerText="기본 정보" class="bpPanel" expandable="false">
+                            <content>
+                                <f:SimpleForm
+                                    editable="{= ${view>/mode} !== 'READ'}"
+                                    layout="ResponsiveGridLayout"
+                                    columnsL="2" columnsM="2"
+                                    labelSpanL="4" labelSpanM="4"
+                                    emptySpanL="0" emptySpanM="0">
+                                    <f:content>
+                                        <Label text="BP 유형" required="true"/>
+                                        <Select selectedKey="{view>/form/Bptype}"
+                                            enabled="{= ${view>/mode} === 'CREATE'}"
+                                            change=".onBptypeChange">
+                                            <items>
+                                                <core:Item key="C" text="고객 (Customer)"/>
+                                                <core:Item key="V" text="공급업체 (Vendor)"/>
+                                            </items>
+                                        </Select>
+
+                                        <Label text="국가 코드" required="true"/>
+                                        <Input id="inpCountrycode"
+                                            value="{view>/form/Countrycode}"
+                                            placeholder="국가를 선택하면 BP코드가 자동 생성됩니다"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            showValueHelp="{= ${view>/mode} !== 'READ'}"
+                                            valueHelpRequest=".onCountryValueHelp"
+                                            maxLength="2"/>
+
+                                        <Label text="BP 코드" required="true"/>
+                                        <Input value="{view>/form/Bpcode}"
+                                            placeholder="국가 선택 시 자동 생성"
+                                            editable="false"
+                                            maxLength="10"
+                                            class="bpCodeReadonly"/>
+
+                                        <Label text="BP 명칭" required="true"/>
+                                        <Input value="{view>/form/Bpname}"
+                                            placeholder="거래처 공식명칭"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="35"/>
+
+                                        <Label text="사업자 번호" required="true"/>
+                                        <Input value="{view>/form/Bizregno}"
+                                            placeholder="사업자등록번호"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="16"/>
+
+                                        <Label text="대표자명" required="true"/>
+                                        <Input value="{view>/form/Repname}"
+                                            placeholder="대표자 이름"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="20"/>
+                                    </f:content>
+                                </f:SimpleForm>
+                            </content>
+                        </Panel>
+
+                        <!-- 연락처 정보 -->
+                        <Panel headerText="연락처 정보" class="bpPanel" expandable="false">
+                            <content>
+                                <f:SimpleForm
+                                    editable="{= ${view>/mode} !== 'READ'}"
+                                    layout="ResponsiveGridLayout"
+                                    columnsL="2" columnsM="2"
+                                    labelSpanL="4" labelSpanM="4"
+                                    emptySpanL="0" emptySpanM="0">
+                                    <f:content>
+                                        <Label text="전화번호" required="true"/>
+                                        <Input value="{view>/form/Telno}"
+                                            placeholder="전화번호"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="20"/>
+
+                                        <Label text="이메일" required="true"/>
+                                        <Input value="{view>/form/Email}"
+                                            placeholder="이메일 주소"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="35"/>
+
+                                        <Label text="주소" required="true"/>
+                                        <Input value="{view>/form/Address}"
+                                            placeholder="본사 주소"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="35"/>
+                                    </f:content>
+                                </f:SimpleForm>
+                            </content>
+                        </Panel>
+
+                        <!-- 재무 정보 -->
+                        <Panel headerText="재무 정보" class="bpPanel" expandable="false">
+                            <content>
+                                <f:SimpleForm
+                                    editable="{= ${view>/mode} !== 'READ'}"
+                                    layout="ResponsiveGridLayout"
+                                    columnsL="2" columnsM="2"
+                                    labelSpanL="4" labelSpanM="4"
+                                    emptySpanL="0" emptySpanM="0">
+                                    <f:content>
+                                        <Label text="결제 조건" required="true"/>
+                                        <Input value="{view>/form/Paymentterm}"
+                                            placeholder="결제 조건 선택"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            showValueHelp="{= ${view>/mode} !== 'READ'}"
+                                            valueHelpRequest=".onPaymentTermValueHelp"
+                                            maxLength="5"/>
+
+                                        <Label text="은행명" required="true"/>
+                                        <Input value="{view>/form/Bankname}"
+                                            placeholder="은행명"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="15"/>
+
+                                        <Label text="계좌번호" required="true"/>
+                                        <Input value="{view>/form/Bankaccount}"
+                                            placeholder="계좌번호"
+                                            editable="{= ${view>/mode} !== 'READ'}"
+                                            maxLength="20"/>
+
+                                        <Label text="활성 상태"/>
+                                        <Select selectedKey="{view>/form/Useflag}"
+                                            enabled="{= ${view>/mode} !== 'READ'}">
+                                            <items>
+                                                <core:Item key="Y" text="활성 (Y)"/>
+                                                <core:Item key="N" text="비활성 (N)"/>
+                                            </items>
+                                        </Select>
+                                    </f:content>
+                                </f:SimpleForm>
+                            </content>
+                        </Panel>
+
+                    </VBox>
+            </content>
+
+            <buttons>
+                <Button text="수정" type="Emphasized" icon="sap-icon://edit"
+                    visible="{= ${view>/mode} === 'READ'}"
+                    press=".onEdit"/>
+                <Button text="삭제" type="Reject" icon="sap-icon://delete"
+                    visible="{= ${view>/mode} === 'READ'}"
+                    press=".onDelete"/>
+                <Button text="저장" type="Emphasized" icon="sap-icon://save"
+                    visible="{= ${view>/mode} !== 'READ'}"
+                    press=".onSave"/>
+                <Button text="취소" icon="sap-icon://decline"
+                    visible="{= ${view>/mode} !== 'READ'}"
+                    press=".onCancel"/>
+                <Button text="닫기"
+                    visible="{= ${view>/mode} === 'READ'}"
+                    press=".onCloseDialog"/>
+            </buttons>
+        </Dialog>
+
+        <!-- ── 국가 서치헬프 ── -->
+        <SelectDialog id="countryDialog"
+            title="국가 선택"
+            search=".onCountryDialogSearch"
+            confirm=".onCountryDialogConfirm"
+            items="{path: 'view>/countries', templateShareable: false}">
+            <StandardListItem title="{view>code}" description="{view>name}" type="Active"/>
+        </SelectDialog>
+
+        <!-- ── 결제 조건 서치헬프 ── -->
+        <SelectDialog id="paymentTermDialog"
+            title="결제 조건 선택"
+            confirm=".onPaymentTermDialogConfirm"
+            items="{path: 'view>/paymentTerms', templateShareable: false}">
+            <StandardListItem title="{view>code}" description="{view>name}" type="Active"/>
+        </SelectDialog>
+
+    </mvc:dependents>
+
+    <!-- ============================================================
+         메인 페이지
+    ============================================================ -->
+    <Page id="mainPage" showHeader="false" class="bpMainPage" backgroundDesign="List">
+        <content>
+
+            <!-- ① KPI 요약 카드 -->
+            <HBox id="kpiRow" class="bpKpiRow" width="100%" alignItems="Center">
+                <!-- 총 BP -->
+                <VBox class="bpKpiCard" justifyContent="Center">
+                    <items>
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://sum" class="bpKpiIcon"/>
+                            <VBox class="bpKpiTextWrap">
+                                <items>
+                                    <Text text="총 BP" class="bpKpiLabel"/>
+                                    <Text text="{view>/kpi/total}" class="bpKpiNumber"/>
+                                    <Text text="전체 거래처" class="bpKpiSub"/>
+                                </items>
+                            </VBox>
+                        </HBox>
+                    </items>
+                </VBox>
+
+                <core:HTML content="&lt;div class='bpKpiDivider'&gt;&lt;/div&gt;"/>
+
+                <!-- 고객 -->
+                <VBox class="bpKpiCard" justifyContent="Center">
+                    <items>
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://customer" class="bpKpiIcon bpKpiIconCust"/>
+                            <VBox class="bpKpiTextWrap">
+                                <items>
+                                    <Text text="고객" class="bpKpiLabel"/>
+                                    <Text text="{view>/kpi/customer}" class="bpKpiNumber"/>
+                                    <Text text="Customer" class="bpKpiSub"/>
+                                </items>
+                            </VBox>
+                        </HBox>
+                    </items>
+                </VBox>
+
+                <core:HTML content="&lt;div class='bpKpiDivider'&gt;&lt;/div&gt;"/>
+
+                <!-- 공급업체 -->
+                <VBox class="bpKpiCard" justifyContent="Center">
+                    <items>
+                        <HBox alignItems="Center">
+                            <core:Icon src="sap-icon://supplier" class="bpKpiIcon bpKpiIconVend"/>
+                            <VBox class="bpKpiTextWrap">
+                                <items>
+                                    <Text text="공급업체" class="bpKpiLabel"/>
+                                    <Text text="{view>/kpi/vendor}" class="bpKpiNumber"/>
+                                    <Text text="Vendor" class="bpKpiSub"/>
+                                </items>
+                            </VBox>
+                        </HBox>
+                    </items>
+                </VBox>
+            </HBox>
+
+            <!-- ② 필터 / 검색 / 액션 툴바 -->
+            <Toolbar id="filterBar" class="bpFilterBar" design="Solid">
+                <SegmentedButton id="typeSegBtn"
+                    selectedKey="{view>/selectedType}"
+                    selectionChange=".onTypeChange">
+                    <items>
+                        <SegmentedButtonItem key="" text="전체"/>
+                        <SegmentedButtonItem key="C" text="고객"/>
+                        <SegmentedButtonItem key="V" text="공급업체"/>
+                    </items>
+                </SegmentedButton>
+                <ToolbarSpacer/>
+                <SearchField id="searchField" width="16rem"
+                    placeholder="BP코드 / BP명 검색"
+                    search=".onSearch"/>
+                <Button text="조회" icon="sap-icon://search"
+                    press=".onSearch" class="bpBtnSearch"/>
+                <Button id="btnNewCreate" text="생성" icon="sap-icon://add"
+                    press=".onNewCreate" type="Emphasized" class="bpBtnCreate"/>
+            </Toolbar>
+
+            <!-- ③ BP 목록 테이블 -->
+            <Table id="bpTable"
+                items="{view>/listItems}"
+                noDataText="조회 버튼을 눌러 데이터를 불러오세요."
+                busyIndicatorDelay="0"
+                busy="{view>/listBusy}"
+                fixedLayout="false"
+                class="bpTable">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="BP 목록" level="H5" class="bpTableTitle"/>
+                        <ToolbarSpacer/>
+                        <Text text="{view>/pagination/pageInfo}" class="bpListCount"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="8rem"><Text text="BP 코드"/></Column>
+                    <Column><Text text="BP 명칭"/></Column>
+                    <Column width="7rem" hAlign="Center"><Text text="유형"/></Column>
+                    <Column width="5rem" hAlign="Center" minScreenWidth="Tablet" demandPopin="true"><Text text="국가"/></Column>
+                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="사업자번호"/></Column>
+                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="전화번호"/></Column>
+                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="이메일"/></Column>
+                    <Column width="6rem" hAlign="Center"><Text text="활성상태"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Active" press=".onRowPress">
+                        <cells>
+                            <Text text="{view>Bpcode}" class="bpCodeCell"/>
+                            <Text text="{view>Bpname}"/>
+                            <ObjectStatus
+                                text="{= ${view>Bptype} === 'C' ? '고객' : '공급업체'}"
+                                state="{= ${view>Bptype} === 'C' ? 'Information' : 'Warning'}"/>
+                            <Text text="{view>Countrycode}"/>
+                            <Text text="{view>Bizregno}"/>
+                            <Text text="{view>Telno}"/>
+                            <Text text="{view>Email}"/>
+                            <ObjectStatus
+                                text="{= ${view>Useflag} === 'Y' ? '활성' : '비활성'}"
+                                state="{= ${view>Useflag} === 'Y' ? 'Success' : 'Error'}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <!-- ④ 페이지 네비게이션 바 -->
+            <Toolbar id="paginationBar" class="bpPaginationBar"
+                visible="{= ${view>/pagination/totalPages} &gt; 1}">
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://slim-arrow-left"
+                    press=".onPrevPage"
+                    enabled="{= ${view>/pagination/currentPage} &gt; 1}"
+                    class="bpPageNavBtn"/>
+                <HBox id="pageButtonsBox" alignItems="Center"
+                    items="{path: 'view>/pagination/pages', templateShareable: false}">
+                    <Button text="{view>num}"
+                        enabled="{view>enabled}"
+                        type="{= ${view>active} ? 'Emphasized' : 'Ghost'}"
+                        press=".onPagePress"
+                        class="bpPageBtn"/>
+                </HBox>
+                <Button icon="sap-icon://slim-arrow-right"
+                    press=".onNextPage"
+                    enabled="{= ${view>/pagination/currentPage} &lt; ${view>/pagination/totalPages}}"
+                    class="bpPageNavBtn"/>
+                <ToolbarSpacer/>
+            </Toolbar>
+
+        </content>
+    </Page>
+</mvc:View>

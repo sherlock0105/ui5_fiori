@@ -1,0 +1,248 @@
+/* =============================================================
+   BP 마스터 관리 — 스타일 (레퍼런스: 외화보유 현황 화면)
+============================================================= */
+
+/* ── 1. KPI 요약 바 ── */
+.bpKpiRow.sapMHBox {
+    background: linear-gradient(135deg, #003d87 0%, #0a5fc8 100%);
+    padding: 1.25rem 2rem;
+    gap: 0;
+    box-sizing: border-box;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* 카드: HBox 안의 VBox → sapMFlexItem 래퍼 */
+.bpKpiRow > .sapMFlexItem {
+    flex: 1 1 0 !important;
+    min-width: 180px;
+}
+
+.bpKpiCard.sapMVBox {
+    padding: 1rem 1.5rem;
+    cursor: default;
+}
+
+/* 구분선 */
+.bpKpiDivider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.25);
+    height: 3.5rem;
+    align-self: center;
+    margin: 0 0.5rem;
+    flex-shrink: 0;
+}
+
+/* 아이콘 */
+.bpKpiIcon.sapUiIcon {
+    font-size: 2rem !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem !important;
+    text-align: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+.bpKpiIconCust.sapUiIcon { color: #a8d4ff !important; }
+.bpKpiIconVend.sapUiIcon { color: #ffd580 !important; }
+
+/* KPI 텍스트 래퍼 */
+.bpKpiTextWrap.sapMVBox {
+    gap: 0;
+}
+
+/* 라벨 */
+.bpKpiLabel.sapMText {
+    color: rgba(255, 255, 255, 0.65) !important;
+    font-size: 0.8125rem !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+}
+
+/* 숫자 */
+.bpKpiNumber.sapMText {
+    color: #ffffff !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    margin: 0.1rem 0 !important;
+}
+
+/* 서브 텍스트 */
+.bpKpiSub.sapMText {
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+}
+
+/* ── 2. 필터/검색 툴바 ── */
+.bpFilterBar.sapMTB {
+    background-color: #f5f7fa !important;
+    border-bottom: 2px solid #d8e3f0;
+    padding: 0.5rem 1.5rem;
+    min-height: 3.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* 조회 버튼 */
+.bpBtnSearch.sapMBtn .sapMBtnInner {
+    background-color: #0070f2;
+    border-color: #0070f2;
+    color: #ffffff;
+}
+.bpBtnSearch.sapMBtn .sapMBtnInner:hover {
+    background-color: #0057b8;
+    border-color: #0057b8;
+}
+
+/* 새로 만들기 버튼 */
+.bpBtnCreate.sapMBtn .sapMBtnInner {
+    background-color: #003d87;
+    border-color: #003d87;
+    color: #ffffff;
+    font-weight: 600;
+}
+.bpBtnCreate.sapMBtn .sapMBtnInner:hover {
+    background-color: #002a60;
+    border-color: #002a60;
+}
+
+/* ── 3. 테이블 ── */
+.bpTable.sapMList {
+    border-top: none;
+}
+
+.bpTable .sapMListTblHeaderCell {
+    background-color: #f0f4f9;
+    color: #0057b8;
+    font-weight: 600;
+    border-bottom: 2px solid #0070f2;
+}
+
+.bpTable .sapMListTblRow:hover > td {
+    background-color: #ebf3ff !important;
+}
+
+.bpTable .sapMListTblRow.sapMLIBSelected > td {
+    background-color: #d6eaff !important;
+}
+
+/* 테이블 헤더 툴바 */
+.bpTable .sapMListHdr {
+    background-color: #f8fafd;
+    border-bottom: 1px solid #d8e3f0;
+    padding: 0 1rem;
+}
+
+.bpTableTitle.sapMTitle {
+    color: #003d87 !important;
+}
+
+.bpListCount.sapMText {
+    color: #6b7c93 !important;
+    font-size: 0.875rem !important;
+}
+
+/* BP 코드 셀 — 강조 */
+.bpCodeCell.sapMText {
+    color: #0070f2 !important;
+    font-weight: 600 !important;
+}
+
+/* ── 4. 다이얼로그 폼 ── */
+.bpDialogBox.sapMVBox {
+    padding: 1rem 1.25rem 0.5rem;
+    gap: 0.75rem;
+}
+
+.bpPanel.sapMPanel {
+    border-left: 3px solid #0070f2;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    margin-bottom: 0;
+}
+
+.bpPanel .sapMPanelHdr {
+    background-color: #e8f1fd;
+    color: #003d87;
+    font-weight: 600;
+}
+
+/* 모드 배너 */
+.bpModeBanner.sapMMessageStrip {
+    margin-bottom: 0.5rem;
+}
+
+/* ── 5. 기타 ── */
+.bpMainPage .sapMPageBgList {
+    background-color: #f5f7fa;
+}
+
+/* ── 6. 페이지 네비게이션 바 ── */
+.bpPaginationBar.sapMTB {
+    background-color: #f8fafd !important;
+    border-top: 1px solid #d8e3f0;
+    padding: 0.4rem 1rem;
+    min-height: 3rem;
+}
+
+/* 이전/다음 화살표 버튼 */
+.bpPageNavBtn.sapMBtn .sapMBtnInner {
+    border-color: #c0cfe0;
+    border-radius: 4px;
+    min-width: 2.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
+}
+.bpPageNavBtn.sapMBtn .sapMBtnInner:hover {
+    background-color: #e8f1fd;
+    border-color: #0070f2;
+}
+
+/* 페이지 번호 버튼 */
+.bpPageBtn.sapMBtn .sapMBtnInner {
+    min-width: 2.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin: 0 1px;
+}
+/* 현재 페이지 (Emphasized) */
+.bpPageBtn.sapMBtn .sapMBtnInner.sapMBtnEmphasized {
+    background-color: #0070f2;
+    border-color: #0070f2;
+}
+/* 비활성 페이지 (Ghost) */
+.bpPageBtn.sapMBtn .sapMBtnInner.sapMBtnGhost {
+    border-color: transparent;
+    color: #0057b8;
+}
+.bpPageBtn.sapMBtn .sapMBtnInner.sapMBtnGhost:hover {
+    background-color: #e8f1fd;
+    border-color: #0070f2;
+}
+/* ··· 생략 버튼 */
+.bpPageBtn.sapMBtn[enabled="false"] .sapMBtnInner,
+.bpPageBtn.sapMBtn:disabled .sapMBtnInner {
+    color: #9aaab8 !important;
+    cursor: default;
+}
+
+/* ── 7. 다이얼로그 스크롤 ── */
+.sapMDialog .sapMDialogScrollCont {
+    overflow-y: auto !important;
+}
+
+/* BP 코드 읽기전용 표시 (자동 채번) */
+.bpCodeReadonly.sapMInputBase .sapMInputBaseInner {
+    background-color: #f0f4f9 !important;
+    color: #0057b8 !important;
+    font-weight: 600 !important;
+    cursor: default;
+}

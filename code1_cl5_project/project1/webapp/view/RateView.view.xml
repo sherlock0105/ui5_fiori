@@ -1,0 +1,221 @@
+<mvc:View controllerName="project1.controller.RateView"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:f="sap.f"
+  xmlns:card="sap.f.cards"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:vizData="sap.viz.ui5.data"
+  xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds"
+  xmlns:core="sap.ui.core">
+
+  <Page title="환율 현황" showHeader="true" busy="{view>/busy}">
+
+    <customHeader>
+      <Bar>
+        <contentLeft>
+          <Title text="📈 환율 현황" level="H3" />
+        </contentLeft>
+        <contentRight>
+          <Button
+            text="새로고침"
+            icon="sap-icon://refresh"
+            type="Transparent"
+            press=".onRefresh" />
+        </contentRight>
+      </Bar>
+    </customHeader>
+
+    <content>
+
+      <HBox
+        justifyContent="SpaceAround"
+        wrap="Wrap"
+        class="sapUiMediumMarginTop sapUiSmallMarginBottom sapUiSmallMarginBeginEnd">
+
+        <GenericTile
+          header="USD / KRW"
+          subheader="미국 달러"
+          frameType="TwoByOne"
+          class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+          <tileContent>
+            <TileContent unit="원">
+              <content>
+                <NumericContent
+                  value="{view>/summary/USD/rate}"
+                  indicator="{= ${view>/summary/USD/diffState} === 'Success' ? 'Up' : ${view>/summary/USD/diffState} === 'Error' ? 'Down' : 'None'}"
+                  valueColor="{view>/summary/USD/diffState}"
+                  withMargin="false" />
+              </content>
+            </TileContent>
+          </tileContent>
+        </GenericTile>
+
+        <GenericTile
+          header="EUR / KRW"
+          subheader="유럽 유로"
+          frameType="TwoByOne"
+          class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+          <tileContent>
+            <TileContent unit="원">
+              <content>
+                <NumericContent
+                  value="{view>/summary/EUR/rate}"
+                  indicator="{= ${view>/summary/EUR/diffState} === 'Success' ? 'Up' : ${view>/summary/EUR/diffState} === 'Error' ? 'Down' : 'None'}"
+                  valueColor="{view>/summary/EUR/diffState}"
+                  withMargin="false" />
+              </content>
+            </TileContent>
+          </tileContent>
+        </GenericTile>
+
+        <GenericTile
+          header="JPY(100) / KRW"
+          subheader="일본 엔"
+          frameType="TwoByOne"
+          class="sapUiSmallMarginBottom">
+          <tileContent>
+            <TileContent unit="원">
+              <content>
+                <NumericContent
+                  value="{view>/summary/JPY/rate}"
+                  indicator="{= ${view>/summary/JPY/diffState} === 'Success' ? 'Up' : ${view>/summary/JPY/diffState} === 'Error' ? 'Down' : 'None'}"
+                  valueColor="{view>/summary/JPY/diffState}"
+                  withMargin="false" />
+              </content>
+            </TileContent>
+          </tileContent>
+        </GenericTile>
+
+      </HBox>
+
+      <HBox
+        justifyContent="SpaceAround"
+        class="sapUiTinyMarginBottom sapUiSmallMarginBeginEnd">
+        <ObjectStatus
+          title="USD 7일변동"
+          text="{view>/summary/USD/diff}"
+          state="{view>/summary/USD/diffState}" />
+        <ObjectStatus
+          title="EUR 7일변동"
+          text="{view>/summary/EUR/diff}"
+          state="{view>/summary/EUR/diffState}" />
+        <ObjectStatus
+          title="JPY 7일변동"
+          text="{view>/summary/JPY/diff}"
+          state="{view>/summary/JPY/diffState}" />
+      </HBox>
+
+      <Panel
+        class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"
+        expandable="false"
+        expanded="true">
+        <headerToolbar>
+          <Toolbar height="3rem">
+            <core:Icon src="sap-icon://line-chart" class="sapUiSmallMarginEnd" />
+            <Title text="1주일 환율 추이" level="H5" />
+            <ToolbarSpacer />
+            <Text text="※ 기준: ZTE3FI0008 등록환율" class="sapUiTinyMarginEnd" />
+          </Toolbar>
+        </headerToolbar>
+        <content>
+          <viz:VizFrame
+            id="vizFrame"
+            uiConfig="{applicationSet:'fiori'}"
+            height="280px"
+            width="100%"
+            vizType="line">
+
+            <viz:dataset>
+              <vizData:FlattenedDataset data="{view>/chartData}">
+                <vizData:dimensions>
+                  <vizData:DimensionDefinition name="날짜"  value="{view>Date}" />
+                </vizData:dimensions>
+                <vizData:measures>
+                  <vizData:MeasureDefinition name="USD" value="{view>USD}" />
+                  <vizData:MeasureDefinition name="EUR" value="{view>EUR}" />
+                  <vizData:MeasureDefinition name="JPY" value="{view>JPY}" />
+                </vizData:measures>
+              </vizData:FlattenedDataset>
+            </viz:dataset>
+
+            <viz:feeds>
+              <vizFeeds:FeedItem uid="valueAxis"    type="Measure"   values="USD,EUR,JPY" />
+              <vizFeeds:FeedItem uid="categoryAxis" type="Dimension" values="날짜" />
+            </viz:feeds>
+
+          </viz:VizFrame>
+        </content>
+      </Panel>
+
+      <Panel
+        class="sapUiSmallMarginBeginEnd sapUiSmallMarginBottom"
+        expandable="true"
+        expanded="true">
+        <headerToolbar>
+          <Toolbar height="3rem">
+            <core:Icon src="sap-icon://table-view" class="sapUiSmallMarginEnd" />
+            <Title text="환율 상세" level="H5" />
+            <ToolbarSpacer />
+            <Text text="{= ${view>/totalCount} + ' 건'}" />
+          </Toolbar>
+        </headerToolbar>
+        <content>
+          <Table
+            items="{view>/rateRows}"
+            alternateRowColors="true"
+            sticky="ColumnHeaders"
+            growing="true"
+            growingThreshold="21">
+
+            <columns>
+              <Column hAlign="Center" width="6rem">
+                <Text text="통화" />
+              </Column>
+              <Column hAlign="Center" width="10rem">
+                <Text text="적용일자" />
+              </Column>
+              <Column hAlign="End" width="10rem">
+                <Text text="환율 (원)" />
+              </Column>
+              <Column hAlign="Center" width="8rem">
+                <Text text="전일대비" />
+              </Column>
+            </columns>
+
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <ObjectStatus
+                    text="{view>Fcurr}"
+                    state="{= ${view>Fcurr} === 'USD' ? 'Information'
+                             : ${view>Fcurr} === 'EUR' ? 'Success'
+                             : 'Warning' }" />
+                  <Text text="{view>DisplayDate}" textAlign="Center" />
+                  <ObjectNumber
+                    number="{view>UkursFmt}"
+                    unit="원"
+                    state="{view>DiffState}" />
+                  <ObjectStatus
+                    text="{view>Diff}"
+                    state="{view>DiffState}"
+                    icon="{= ${view>DiffState} === 'Success' ? 'sap-icon://trend-up'
+                             : ${view>DiffState} === 'Error' ? 'sap-icon://trend-down'
+                             : '' }" />
+                </cells>
+              </ColumnListItem>
+            </items>
+
+            <noData>
+              <IllustratedMessage
+                illustrationType="sapIllus-NoData"
+                title="데이터 없음"
+                description="환율 데이터가 없습니다. ZTE3FI0008을 확인하세요." />
+            </noData>
+
+          </Table>
+        </content>
+      </Panel>
+
+    </content>
+  </Page>
+</mvc:View>

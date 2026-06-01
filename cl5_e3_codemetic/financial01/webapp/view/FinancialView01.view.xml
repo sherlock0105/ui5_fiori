@@ -1,0 +1,189 @@
+<mvc:View controllerName="financial01.financial01.controller.FinancialView01"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Page id="page" title="재무상태표"
+          busy="{view>/busy}" busyIndicatorDelay="0"
+          class="sapUiNoContentPadding">
+
+        <!-- ══ 검색 (SubHeader) ══════════════════════════════ -->
+        <subHeader>
+            <Bar>
+                <contentLeft>
+                    <Label text="회사코드 :" design="Bold" class="sapUiSmallMarginEnd" />
+                    <Input id="idBukrs" value="{view>/bukrs}"
+                           width="80px" maxLength="4"
+                           class="sapUiSmallMarginEnd" />
+                    <Label text="회계연도 :" design="Bold" class="sapUiSmallMarginEnd" />
+                    <Select id="selYear" selectedKey="{view>/gjahr}"
+                            change="onYearChange"
+                            items="{ path:'view>/years', templateShareable:false }">
+                        <core:Item key="{view>key}" text="{view>text}" />
+                    </Select>
+                    <Button text="조회" type="Emphasized" press="onSearch"
+                            icon="sap-icon://search"
+                            class="sapUiSmallMarginBegin" />
+                </contentLeft>
+                <contentRight>
+                    <Button text="Excel 저장" press="onExport"
+                            icon="sap-icon://excel-attachment"
+                            type="Ghost"
+                            enabled="{view>/hasData}" />
+                </contentRight>
+            </Bar>
+        </subHeader>
+
+        <content>
+
+            <!-- ══ 보고서 헤더 ════════════════════════════════ -->
+            <VBox alignItems="Center"
+                  class="bsReportHeader sapUiMediumMarginTop sapUiSmallMarginBottom">
+                <Title text="재  무  상  태  표" level="H1" />
+                <Text text="{= '회사코드 : ' + ${view>/bukrs} + '          (단위 : 원)' }"
+                      textAlign="Center" class="bsReportSub sapUiTinyMarginTop" />
+                <HBox justifyContent="Center" class="sapUiTinyMarginTop">
+                    <Text text="{= '당기 : ' + ${view>/gjahr}    + '년 1월 1일 ~ ' + ${view>/gjahr}    + '년 12월 31일' }"
+                          class="bsReportSub sapUiSmallMarginEnd" />
+                    <Text text="  |  " class="bsReportSub sapUiSmallMarginEnd" />
+                    <Text text="{= '전기 : ' + ${view>/prevYear} + '년 1월 1일 ~ ' + ${view>/prevYear} + '년 12월 31일' }"
+                          class="bsReportSub" />
+                </HBox>
+            </VBox>
+
+            <!-- ══ KPI 카드 (파란 카드 스타일) ══════════════════════ -->
+            <HBox visible="{view>/hasData}" width="100%"
+                  class="sapUiSmallMarginBottom">
+
+                <!-- 자산 총계 -->
+                <VBox width="33%" class="fxKpiCard sapUiTinyMarginEnd">
+                    <HBox alignItems="Center" class="fxKpiCardTop">
+                        <core:Icon src="sap-icon://home" class="fxKpiIcon" />
+                        <VBox class="sapUiSmallMarginBegin">
+                            <Text text="자산 총계" class="fxKpiTitle" />
+                            <Text text="Total Assets" class="fxKpiSub" />
+                        </VBox>
+                    </HBox>
+                    <Text text="{= ${view>/sumAssetFmt} + ' 원'}" class="fxKpiAmount" />
+                    <Text text="{= '≈ ' + ${view>/kpiAsset}}" class="fxKpiKrw" />
+                </VBox>
+
+                <!-- 부채 총계 -->
+                <VBox width="33%" class="fxKpiCard sapUiTinyMarginEnd">
+                    <HBox alignItems="Center" class="fxKpiCardTop">
+                        <core:Icon src="sap-icon://expense-report" class="fxKpiIcon" />
+                        <VBox class="sapUiSmallMarginBegin">
+                            <Text text="부채 총계" class="fxKpiTitle" />
+                            <Text text="Total Liabilities" class="fxKpiSub" />
+                        </VBox>
+                    </HBox>
+                    <Text text="{= ${view>/sumLiabFmt} + ' 원'}" class="fxKpiAmount" />
+                    <Text text="{= '≈ ' + ${view>/kpiLiab}}" class="fxKpiKrw" />
+                </VBox>
+
+                <!-- 자본 총계 -->
+                <VBox width="34%" class="fxKpiCard">
+                    <HBox alignItems="Center" class="fxKpiCardTop">
+                        <core:Icon src="sap-icon://trend-up" class="fxKpiIcon" />
+                        <VBox class="sapUiSmallMarginBegin">
+                            <Text text="자본 총계" class="fxKpiTitle" />
+                            <Text text="Total Equity" class="fxKpiSub" />
+                        </VBox>
+                    </HBox>
+                    <Text text="{= ${view>/sumEquityFmt} + ' 원'}" class="fxKpiAmount" />
+                    <Text text="{= '≈ ' + ${view>/kpiEquity}}" class="fxKpiKrw" />
+                </VBox>
+
+            </HBox>
+
+            <!-- ══ KPI 하단 요약 바 ═══════════════════════════════ -->
+            <HBox visible="{view>/hasData}" width="100%"
+                  class="fxKpiSummaryBar sapUiSmallMarginBottom">
+
+                <HBox width="33%" alignItems="Center" class="fxKpiSummaryItem">
+                    <Text text="자산" class="fxKpiSumLabel" />
+                    <VBox class="sapUiSmallMarginBegin">
+                        <Text text="{= ${view>/sumAssetFmt} + ' 원'}" class="fxKpiSumAmount" />
+                        <Text text="{= '≈ ' + ${view>/kpiAsset}}" class="fxKpiSumKrw" />
+                    </VBox>
+                </HBox>
+
+                <HBox width="33%" alignItems="Center" class="fxKpiSummaryItem">
+                    <Text text="부채" class="fxKpiSumLabel" />
+                    <VBox class="sapUiSmallMarginBegin">
+                        <Text text="{= ${view>/sumLiabFmt} + ' 원'}" class="fxKpiSumAmount" />
+                        <Text text="{= '≈ ' + ${view>/kpiLiab}}" class="fxKpiSumKrw" />
+                    </VBox>
+                </HBox>
+
+                <HBox width="34%" alignItems="Center" class="fxKpiSummaryItem">
+                    <Text text="자본" class="fxKpiSumLabel" />
+                    <VBox class="sapUiSmallMarginBegin">
+                        <Text text="{= ${view>/sumEquityFmt} + ' 원'}" class="fxKpiSumAmount" />
+                        <Text text="{= '≈ ' + ${view>/kpiEquity}}" class="fxKpiSumKrw" />
+                    </VBox>
+                </HBox>
+
+            </HBox>
+
+            <!-- ══ 대차 일치 여부 ══════════════════════════════ -->
+            <MessageStrip
+                visible="{view>/hasData}"
+                text="{= ${view>/balanced}
+                    ? '대차 일치  ✓   자산 합계 = 부채 + 자본  ( ' + ${view>/sumAssetFmt} + ' 원 )'
+                    : '⚠  대차 불일치 — 자산과 부채+자본이 맞지 않습니다.' }"
+                type="{= ${view>/balanced} ? 'Success' : 'Warning' }"
+                showIcon="true"
+                class="sapUiSmallMarginBottom" />
+
+            <!-- ══ 재무상태표 테이블 ═══════════════════════════ -->
+            <Table id="idBsTable"
+                   items="{ path:'view>/rows', templateShareable:false }"
+                   showSeparators="Inner"
+                   backgroundDesign="Transparent"
+                   sticky="ColumnHeaders,HeaderToolbar"
+                   width="100%"
+                   noDataText="회사코드와 회계연도를 입력 후 조회 버튼을 클릭하세요.">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="재무상태표 상세 내역" level="H4" />
+                        <ToolbarSpacer />
+                        <ObjectStatus
+                            text="{= '당기 ' + ${view>/gjahr} + '년  |  전기 ' + ${view>/prevYear} + '년' }"
+                            state="Information"
+                            inverted="true" />
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column>
+                        <Text text="계  정  과  목" />
+                    </Column>
+                    <Column hAlign="End" width="17rem">
+                        <Text text="{= '전기  (' + ${view>/prevYear} + '년)' }" />
+                    </Column>
+                    <Column hAlign="End" width="17rem">
+                        <Text text="{= '당기  (' + ${view>/gjahr}    + '년)' }" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Inactive"
+                        class="{= ${view>level} === 'section' ? 'bsRowSection'
+                                 : ${view>level} === 'group'   ? 'bsRowGroup'
+                                 : ${view>level} === 'total'   ? 'bsRowTotal'
+                                 : ${view>level} === 'grand'   ? 'bsRowGrand'
+                                 :                               'bsRowItem' }">
+                        <cells>
+                            <Text text="{view>label}" />
+                            <Text text="{view>prevFmt}" textAlign="End" />
+                            <Text text="{view>currFmt}" textAlign="End" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </content>
+    </Page>
+</mvc:View>

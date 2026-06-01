@@ -1,0 +1,117 @@
+<mvc:View controllerName="firate01.firate01.controller.FiRateView01"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls">
+
+    <Page id="page" title="외화보유 현황 및 환율 평가"
+          busy="{view>/busy}" busyIndicatorDelay="0"
+          class="sapUiNoContentPadding">
+
+        <!-- ══ 검색 바 ══════════════════════════════════════════ -->
+        <subHeader>
+            <Bar>
+                <contentLeft>
+                    <Label text="기준일 :" design="Bold" class="sapUiSmallMarginEnd" />
+                    <DatePicker id="idEvdat"
+                                displayFormat="yyyy-MM-dd"
+                                valueFormat="yyyyMMdd"
+                                width="148px"
+                                class="sapUiSmallMarginEnd" />
+                    <Button text="조회" type="Emphasized" press="onSearch"
+                            icon="sap-icon://search" />
+                </contentLeft>
+                <contentRight>
+                    <Button text="Excel 저장" press="onExport"
+                            icon="sap-icon://excel-attachment"
+                            type="Ghost"
+                            enabled="{view>/hasData}" />
+                </contentRight>
+            </Bar>
+        </subHeader>
+
+        <content>
+
+            <!-- ══ 요약 메시지 ══════════════════════════════════ -->
+            <MessageStrip
+                visible="{view>/hasData}"
+                text="{view>/summaryText}"
+                type="Information"
+                showIcon="true"
+                class="fxSummaryStrip" />
+
+            <!-- ══ 환율 폴백 안내 (전일 환율 사용 시) ══════════ -->
+            <MessageStrip
+                visible="{view>/hasRateNotice}"
+                text="{view>/rateNotice}"
+                type="Warning"
+                showIcon="true"
+                class="fxRateNoticeStrip" />
+
+            <!-- ══ 통화 카드 그리드 ══════════════════════════════
+                 currencyCards 배열 → FlexBox items 바인딩
+                 카드 내부 List.items 는 {view>accounts} 상대 바인딩  -->
+            <FlexBox id="idCurrencyCards"
+                     visible="{view>/hasData}"
+                     items="{ path:'view>/currencyCards', templateShareable:false }"
+                     wrap="Wrap"
+                     alignItems="Start"
+                     class="fxCardGrid">
+
+                <VBox class="{view>cssClass}">
+
+                    <!-- ① 컬러 헤더 영역 (그라디언트) -->
+                    <VBox class="fxCurrHeaderArea">
+                        <HBox alignItems="Center" class="fxCurrHdrRow">
+                            <core:Icon src="{view>icon}" class="fxCurrIcon" />
+                            <VBox class="sapUiSmallMarginBegin">
+                                <Text text="{view>title}"    class="fxCurrTitle" />
+                                <Text text="{view>subtitle}" class="fxCurrSub"   />
+                            </VBox>
+                        </HBox>
+                        <!-- 통화 합계 잔액 -->
+                        <Text text="{= ${view>totalWrbtrFmt} + '  ' + ${view>fwaer} }"
+                              class="fxCurrTotalAmt" />
+                        <!-- KRW 환산 (KRW 카드는 동일값이므로 단위만 표시) -->
+                        <Text text="{= ${view>isKrw}
+                                     ? (${view>totalEvalFmt} + ' 원')
+                                     : ('≈  ' + ${view>totalEvalFmt} + ' 원') }"
+                              class="fxCurrTotalKrw" />
+                    </VBox>
+
+                    <!-- ② 계좌별 상세 행 -->
+                    <List items="{view>accounts}"
+                          showSeparators="None"
+                          backgroundDesign="Transparent"
+                          class="fxAccList">
+                        <CustomListItem>
+                            <HBox justifyContent="SpaceBetween"
+                                  alignItems="Center"
+                                  class="fxAccRow">
+                                <Text text="{view>Hktid}" class="fxAccId" />
+                                <VBox alignItems="End">
+                                    <Text text="{= ${view>WrbtrFmt} + '  ' + ${view>Fwaer} }"
+                                          class="fxAccAmt" />
+                                    <Text text="{= '≈ ' + ${view>EvalKrwFmt} + '  원' }"
+                                          class="fxAccKrw"
+                                          visible="{= !${view>IsKrw} }" />
+                                </VBox>
+                            </HBox>
+                        </CustomListItem>
+                    </List>
+
+                </VBox>
+            </FlexBox>
+
+            <!-- ══ 차트 ═════════════════════════════════════════ -->
+            <Panel headerText="통화 / 계좌별  KRW 평가금액 현황"
+                   visible="{view>/hasData}"
+                   class="fxChartPanel">
+                <viz:VizFrame id="idPnlChart"
+                              height="300px"
+                              width="100%" />
+            </Panel>
+
+        </content>
+    </Page>
+</mvc:View>

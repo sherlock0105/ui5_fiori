@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "4.0"
+metadata:
+  name: firate01.firate01
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://bgissap3.bgissap.co.kr:8000/
+          client: '100'
+        app:
+          name: ZPE3FI_0001
+          description: '[FI] 외화보유 현황 및 환율 조회'
+          package: ZPE3FI
+          transport: EFXK901650
+        exclude:
+          - /test/

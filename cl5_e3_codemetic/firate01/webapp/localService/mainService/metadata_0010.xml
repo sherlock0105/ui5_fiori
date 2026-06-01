@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZCDS_E3_FI_0010_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZCDS_E3_FI_0010Type" sap:label="[FI] 통화별 통장잔액 집계" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_EVDAT"/>
+                    <PropertyRef Name="Hbkid"/>
+                    <PropertyRef Name="Hktid"/>
+                    <PropertyRef Name="Fwaer"/>
+                </Key>
+                <Property Name="P_EVDAT"  Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="기준일"/>
+                <Property Name="Hbkid"    Type="Edm.String"   Nullable="false" MaxLength="5"  sap:display-format="UpperCase" sap:label="하우스뱅크 ID"/>
+                <Property Name="Hktid"    Type="Edm.String"   Nullable="false" MaxLength="5"  sap:display-format="UpperCase" sap:label="계좌 ID"/>
+                <Property Name="Fwaer"    Type="Edm.String"   Nullable="false" MaxLength="5"  sap:display-format="UpperCase" sap:label="통화키" sap:semantics="currency-code"/>
+                <Property Name="Wrbtr"    Type="Edm.Decimal"  Precision="29"   Scale="3"      sap:label="통화별 잔액"/>
+                <Property Name="Dmbtr"    Type="Edm.Decimal"  Precision="21"   Scale="3"      sap:label="원화 환산 잔액"/>
+                <Property Name="Lwaers"   Type="Edm.String"   MaxLength="5"    sap:display-format="UpperCase" sap:semantics="currency-code"/>
+                <NavigationProperty Name="Parameters"
+                    Relationship="ZCDS_E3_FI_0010_CDS.assoc_FI0010"
+                    FromRole="ToRole_assoc_FI0010"
+                    ToRole="FromRole_assoc_FI0010"
+                    sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZCDS_E3_FI_0010Parameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="P_EVDAT"/>
+                </Key>
+                <Property Name="P_EVDAT" Type="Edm.DateTime" Nullable="false" Precision="0"
+                    sap:display-format="Date" sap:parameter="mandatory" sap:label="기준일"
+                    sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set"
+                    Relationship="ZCDS_E3_FI_0010_CDS.assoc_FI0010"
+                    FromRole="FromRole_assoc_FI0010"
+                    ToRole="ToRole_assoc_FI0010"/>
+            </EntityType>
+            <Association Name="assoc_FI0010" sap:content-version="1">
+                <End Type="ZCDS_E3_FI_0010_CDS.ZCDS_E3_FI_0010Parameters" Multiplicity="1"  Role="FromRole_assoc_FI0010"/>
+                <End Type="ZCDS_E3_FI_0010_CDS.ZCDS_E3_FI_0010Type"       Multiplicity="*"  Role="ToRole_assoc_FI0010"/>
+            </Association>
+            <EntityContainer Name="ZCDS_E3_FI_0010_CDS_Entities" m:IsDefaultEntityContainer="true"
+                sap:message-scope-supported="true" sap:supported-formats="atom json">
+                <EntitySet Name="ZCDS_E3_FI_0010Set" EntityType="ZCDS_E3_FI_0010_CDS.ZCDS_E3_FI_0010Type"
+                    sap:creatable="false" sap:updatable="false" sap:deletable="false"
+                    sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZCDS_E3_FI_0010" EntityType="ZCDS_E3_FI_0010_CDS.ZCDS_E3_FI_0010Parameters"
+                    sap:creatable="false" sap:updatable="false" sap:deletable="false"
+                    sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_FI0010" Association="ZCDS_E3_FI_0010_CDS.assoc_FI0010"
+                    sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZCDS_E3_FI_0010"    Role="FromRole_assoc_FI0010"/>
+                    <End EntitySet="ZCDS_E3_FI_0010Set"  Role="ToRole_assoc_FI0010"/>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
